@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户登录</title>
+<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="../easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+<link type="text/css" rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+	<div class="topbac">
+		<div class="log">
+			<img src="../img/logo.jpg" class="logimg">
+		</div>
+		<div class="shuxian"
+			style="height: 75px; width: 1px; border-left: 1px #ccc solid"></div>
+		<div class="loginFont">
+			<font color="#29B7E7">合同管理系统</font>
+		</div>
+	</div>
+	
+	<div>
+		<div>
+			<img src="../img/mainImg.jpg" class="mainImg">
+		</div>
+	
+	</div>
+
+
+	<!-- <div class="loginLocation">
+	<div class="loginHeader">
+		<font class="topfont" size="5">用户登录</font>
+		</div>
+		<form action="login.action" method="post">
+			<img src="../easyui/themes/icons/man.png" class="man"> <input
+				type="text" name="username" class="username" placeholder=" 用户名">
+				<div class="usernameError"></div>
+
+			<img src="../easyui/themes/icons/lock.png" class="lock"> <input
+				type="password" name="password" class="password" placeholder=" 密码">
+				<div class="passwordError"></div>
+			
+			<div class="jizhuPass">
+				<input type="checkbox" class="checkBox" name="rememberPass">
+				<font color="#767676" size="3px">记住密码</font>
+			</div>
+			
+			<div class="bottom">
+				<input type="submit" class="sub" value=""> 
+			</div>
+		</form>
+	</div> -->
+	
+	<div class="login_shuxian">
+		
+	</div>
+	
+	<div class="loginLocation">
+		<f
+	</div>
+	
+	<!-- <div class="last">
+		<a class="tel" >管理员电话: 18983663206</a>
+	</div> -->
+</body>
+</html>

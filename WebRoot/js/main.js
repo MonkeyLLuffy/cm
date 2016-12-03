@@ -1,0 +1,35 @@
+
+$(function(){
+	$(".main_searchTextBox").click(function(){
+		$(".gaojiSerach").toggle();
+	});
+	
+	$(".gaojiSearch").mousemove(function(){
+		$(".gaojiSerach").show();
+	});
+	
+	$(".closeable").click(function(){
+		$(".gaojiSerach").hide();
+	});
+	
+	$(".main_searchBtn").click(function(e){
+		$(".gaojiSerach").hide();
+		$("form").submit();
+	});
+	
+	$(".contractName").tooltip({
+		content:"使用前请按重置一次",
+	});
+	$(".dateBox").datebox({editable:false});
+	
+	$(".reset").click(function(){
+		$(".signingDateStart").combo("setValue", "").combo("setText","");
+		$(".signingDateEnd").combo("setValue", "").combo("setText","");
+		$(".importDateStart").combo("setValue", "").combo("setText","");
+		$(".importDateEnd").combo("setValue", "").combo("setText","");
+		$(".deadlineStart").combo("setValue", "").combo("setText","");
+		$(".deadlineEnd").combo("setValue", "").combo("setText","");
+	});
+	
+	
+});

@@ -1,0 +1,20 @@
+
+$(function(){
+	$(".main_searchTextBox").click(function(){
+		$(".gaojiSerach").toggle();
+	});
+	
+	$(".gaojiSearch").mousemove(function(){
+		$(".gaojiSerach").show();
+	});
+	
+	$(".closeable").click(function(){
+		$(".gaojiSerach").hide();
+	});
+	
+	$(".main_searchBtn").click(function(){
+		$(".gaojiSerach").hide();
+		$("form").submit();
+	});
+	
+});

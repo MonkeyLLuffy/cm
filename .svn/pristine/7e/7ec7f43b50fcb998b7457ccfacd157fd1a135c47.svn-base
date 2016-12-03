@@ -1,0 +1,33 @@
+package cn.dlb.cm.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.service.recordHistory.RecordHistoryService;
+
+@Controller
+@RequestMapping("/history")
+public class RecordHistoryController {
+	
+	@Autowired
+	private RecordHistoryService historyService;
+	
+	
+	
+	@RequestMapping("/downHistory.action")
+	public String downloadHistory(PageBean bean,Model model,String id,String user,String contractName,String userType,String type){
+		
+		PageBean pageBean=historyService.getDownloadHistory(bean, id, user, contractName, userType,type);
+		System.out.println(pageBean);
+		model.addAttribute("pageBean", pageBean);
+		model.addAttribute("id", id);
+		model.addAttribute("userType", userType);
+		model.addAttribute("contractName", contractName);
+		model.addAttribute("downUser", user);
+		model.addAttribute("type", type);
+		return "/personalCenter/downloadRecord.jsp";
+	}
+}

@@ -1,0 +1,86 @@
+.paging{
+	position: absolute;
+	top: 1730px;
+	left: 530px;
+	width: 1200px;
+	height: 200px;
+	
+}
+.page_link{
+	color:#0066CC;
+	text-decoration:none;
+	cursor: pointer;
+	font-size: 14px;
+	display: block;
+	width:30px;
+	height: 23px;
+}
+.page_link_div{
+	border: #999999 solid 1px;
+	text-align:center;
+	line-height:23px;
+	width:30px;
+	height: 23px;
+	border-left: none;
+}
+.page_link_div:HOVER{
+	background: gray;
+}
+.left{
+	border-left: #999999 solid 1px;
+}
+.page_all{
+	float:left;
+}
+.page_bottomOrNext{
+	border: #999999 solid 1px;
+	line-height:23px;
+	width:75px;
+	height: 23px;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+}
+.page_bottomOrNext:HOVER{
+	background: gray;                            
+}
+.none:HOVER{
+	background: #F0F9FD;
+	cursor: auto;
+}
+.dian{
+	font-size:20px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.page_sub{
+	height: 23px;
+	width: 40px;
+	border:1px solid #CCCCCC;
+	border-radius: 3px;
+	background: #F0F9FD;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.page_textBox{
+	height: 22px;
+	width: 50px;
+	border:1px solid #CCCCCC;
+	margin: 0 5px 0 5px;
+}
+.pageNext{
+	color:#0066CC;
+	display: block;
+	width:75px;
+	height: 23px;
+	
+}
+.pageButton{
+	color:#0066CC;
+	display: block;
+	width:75px;
+	height: 23px;
+	
+}

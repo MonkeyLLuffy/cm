@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../css/dataTable.css" rel="stylesheet" />
+	<link href="../css/paging.css" rel="stylesheet" />
+</head>
+<body>
+    <span>
+	<a class="address"> <span> 管理设置</span> </a>  <span class="address">  > </span>
+		<a class="address"> <span>回收站</span> </a>
+    </span>
+
+   
+    <!-- 数据表格 -->
+    <table id="dg">
+        <tr>
+            <th>
+                <input type="checkbox" name="checkAll" id="checkAll" value="全选/全不选" />
+            </th>
+            <th><div class="div_short">序号</div></th>            
+            <th><div class="div_short">流程编号</div></th>
+            <th><div class="div_long">合同名称</div></th>
+            <th><div class="div_middle">甲方</div></th>
+            <th><div class="div_middle">乙方</div></th>
+            <th><div class="div_short">合同类型</div></th>
+            <th><div class="div_short">签订日期</div></th>
+            <th><div class="div_short">合同期限</div></th>
+            <th><div class="div_short">导入时间</div></th>
+            <th><div class="div_short">合同金额</div></th>
+            <th><div class="div_short">经办部门</div></th>
+            <th><div class="div_short">经办人</div></th>
+            <th><div class="div_middle">备注</div></th>
+            <th><div class="div_middle">操作</div></th>
+        </tr>
+        
+        <tbody id = "tableBody">
+        </tbody>
+    </table>
+<div>
+
+    <div class="paging" id = "paging">
+	</div>
+
+
+</div>
+    <script src="../frame/jquery-1.11.1.js"></script>
+    <script src="../js/recycleBin.js"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+
+
+$(function(){
+	$(".username").tooltip({
+		content:"请输入您的用户名",
+	});
+	
+	$(".password").tooltip({
+		content:"请输入您的密码",
+	});
+	
+	$(".sub").click(function(e){
+		if($(".username").val().trim()==""){
+			e.preventDefault();
+			$(".usernameError").stop(true,true);
+			$(".usernameError").fadeIn(1500);
+			$(".usernameError").html("用户名未填写!");
+			$(".usernameError").fadeOut(2500);
+		}
+		
+		if($(".password").val().trim()==""){
+			e.preventDefault();
+			$(".passwordError").stop(true,true);
+			$(".passwordError").fadeIn(1500);
+			$(".passwordError").html("密码未填写!");
+			$(".passwordError").fadeOut(2500);
+		}
+	});
+	
+});

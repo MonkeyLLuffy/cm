@@ -1,0 +1,63 @@
+package cn.dlb.cm.dao.user;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
+import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.stereotype.Repository;
+
+import com.google.gson.Gson;
+
+import cn.dlb.cm.base.dao.BaseDaoImpl;
+import cn.dlb.cm.entity.User;
+
+@Repository
+@SuppressWarnings("unchecked")
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
+
+	
+	public User check(User user) {
+		
+		List <User>list=this.getSession()//
+		.createQuery("from User where username=? and password=?")//
+		.setParameter(0, user.getUsername())//
+		.setParameter(1, user.getPassword())//
+		.getResultList();
+		if(list.size()==0){
+			return null;
+		}else{
+			return list.get(0);
+		}
+	}
+
+	@Override
+	public Map<String, Object> getUserWithPaging(String condition, int rows, int page) {
+		// TODO Auto-generated method stub
+		int start = (page-1)* rows ;
+		List<Map<String, Object>> list=this.getSession()
+				.createQuery("from User ")
+				.setFirstResult(start)
+				.setMaxResults(rows)
+				.getResultList();
+		Long total = (Long)this.getSession().createQuery("select count(*) as total from User").getSingleResult();
+		if(list.size()==0){
+			return null;
+		}else{
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("data", list);
+			map.put("total", total);
+			map.put("totalPage", total/rows);
+			return map;
+		}
+		
+		
+	}
+
+	
+}

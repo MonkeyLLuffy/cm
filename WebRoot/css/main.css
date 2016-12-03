@@ -1,0 +1,201 @@
+
+.main_top{
+	width: 1366px;
+	height: 166px;
+}
+.main_body{
+	padding: 0;
+	margin: 0;
+}
+
+*{
+	font-size:10pt;
+}
+body{
+	text-align:center;
+}
+.table{
+	width:1366px;
+	height:100%;
+	border:0px;
+	
+}
+.table td{
+	border:0px;/*固定边框,1像素*/
+}
+.topFrame{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.bodyFrame{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.main_textBoxLocation{
+	position: absolute;
+	top:-10px;
+	left: 171px;
+}
+.main_searchTextBox{
+	width: 250px;
+	height: 44px;
+	border: 2px solid #29B7E7 ;
+	border-right: none;
+	font-size: 19px;
+	z-index: 9998;
+	background: url(../img/jiantou.png) no-repeat;
+	background-size:9%;
+	background-position: 220px;
+	cursor: pointer;
+}
+.main_searchBtn{
+	position: absolute;
+	top: 0px;
+	left: 250px;
+	width: 80px;
+	height: 44px;
+	font-size:18px;
+	border: 2px solid #29B7E7 ;
+	background: #199ED8;
+	cursor: pointer;
+}
+
+.gaojiSerach{
+	position: absolute;
+	top:33px;
+	left: -51px;
+	width:550px;
+	height: 360px;
+	border:solid 1px #29B7E7;
+	background:#F5F9FC;
+	z-index: 9998;
+}
+
+
+.showLocation{
+	position: absolute;
+	top: 78px;
+	left: 750px;
+	
+}
+
+
+
+.inputBox{
+	width: 150px;
+	height: 30px;
+	border: 1px solid  #29B7E7;
+	position: relative;
+	left: 10px;
+	text-indent: 5px;
+}
+
+.contractNameLocation{
+	position: absolute;
+	left: 15px;
+	top: 15px;
+}
+
+.idLocation{
+	position: absolute;
+	left: 285px;
+	top: 15px;
+}
+.partyALocation{
+	position: absolute;
+	left: 15px;
+	top: 55px;
+}
+.partyBLocation{
+	position: absolute;
+	left: 285px;
+	top: 55px;
+}
+
+
+
+.operatorLocation{
+	position: absolute;
+	left: 285px;
+	top: 95px;
+}
+.departLocation{
+	position: absolute;
+	left: 15px;
+	top: 135px;
+}
+.contractAmountLocation{
+	position: absolute;
+	left: 15px;
+	top: 95px;
+	
+}
+.contractTypeLocation{
+	position: absolute;
+	left: 285px;
+	top: 135px;
+}
+
+.signingDateStartLocation{
+	position: absolute;
+	left: 15px;
+	top: 175px;
+}
+.importDateStartLocation{
+	position: absolute;
+	left: 15px;
+	top: 215px;
+}
+.deadlineStartLocation{
+	position: absolute;
+	left: 15px;
+	top: 255px;
+}
+.operator{
+	position: relative;
+	left: 23px;
+}
+
+.click{
+	position: relative;
+	width:150px;
+	height:30px;
+	border:solid 1px #29B7E7;
+	left: 10px;
+}
+.end{
+	position: relative;
+	left: 76px;
+}
+
+.reset{
+	position: absolute;
+	top: 307px;
+	left:100px;
+	border:0px;
+	width:150px;
+	height:30px;
+	background: #29B7E7;
+	cursor: pointer;
+}
+.closeable{
+	position: absolute;
+	top: 307px;
+	left:300px;
+	border:0px;
+	width:150px;
+	height:30px;
+	background: #29B7E7;
+	cursor: pointer;
+	
+}
+
+
+
+
+

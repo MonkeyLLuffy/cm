@@ -1,0 +1,23 @@
+package cn.dlb.cm.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+	
+	/**
+	 * 
+	 * 方法描述:跳转到登录界面
+	 * @return 跳转/user/login.jsp
+	 * 作者:路遥
+	 */
+	@RequestMapping("/loginUI.action")
+	public String loginUI(){
+		return "/user/login.jsp";
+	}
+	
+	
+	
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 16:38:02 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.ContractRecord" table="CONTRACTRECORD">
+        <id name="id" type="java.lang.String" >
+            <column name="ID" length="20"/>
+            <generator class="assigned" />
+        </id>
+        <property name="contractNum" type="java.lang.String" >
+            <column name="CONTRACTNUM" length="50"/>
+        </property>
+        <property name="contractName" type="java.lang.String" >
+            <column name="CONTRACTNAME" length="100"/>
+        </property>
+        <property name="partyA" type="java.lang.String" >
+            <column name="PARTYA" length="100"/>
+        </property>
+        <property name="partyB" type="java.lang.String">
+            <column name="PARTYB"  length="100"/>
+        </property>
+        <property name="contractType" type="java.lang.String">
+            <column name="CONTRACTTYPE" />
+        </property>
+        <property name="signingDate" type="java.sql.Date">
+            <column name="SIGNINGDATE" />
+        </property>
+        <property name="deadline" type="java.sql.Date">
+            <column name="DEADLINE" />
+        </property>
+        <property name="importDate" type="java.sql.Date">
+            <column name="IMPORTDATE" />
+        </property>
+       
+        <property name="contractAmount" type="java.lang.String">
+            <column name="CONTRACTAMOUNT" length="50"/>
+        </property>
+        <property name="depart" type="java.lang.String" >
+            <column name="DEPART" length="50"/>
+        </property>
+        <property name="operator" type="java.lang.String" >
+            <column name="OPERATOR" length="20"/>
+        </property>
+        <property name="remark" type="text">
+            <column name="REMARK"  length="2000"/>
+        </property>
+        <many-to-one name="contractFile" class="cn.dlb.cm.entity.ContractFile" unique="true" column="CONTRACTFILE"></many-to-one>
+        <many-to-one name="importUser" class="cn.dlb.cm.entity.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <property name="state" type="int" >
+            <column name="STATE" length="2"/>
+        </property>
+    </class>
+</hibernate-mapping>

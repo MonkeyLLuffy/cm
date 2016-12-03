@@ -1,0 +1,14 @@
+package cn.dlb.cm.service.contractRecord;
+
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.entity.Query_ContractRecord;
+
+public interface ContractRecordService {
+
+	PageBean findadvancedSearch(Query_ContractRecord contractRecord,PageBean pageBean,String importDateSort,String signingDateSort,String deadlineSort);
+
+	void deleteContractRecord(String id);
+
+	
+
+}

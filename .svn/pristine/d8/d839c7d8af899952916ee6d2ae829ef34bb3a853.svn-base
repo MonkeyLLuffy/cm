@@ -1,0 +1,697 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>PageTable2.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  	
+  <body>
+  	<div style="position:relative; width:150px; height:25px; z-index:10; left:10px; top:1px; color: #28B7E7">首页>数据汇总表</div>
+  	
+  	<input type="button" id= "notUpload" style="position:relative; width:100px; height:25px; z-index:10; left:988px; top:-6px; color: #28B7E7" value="未上传"/>
+  	
+  	<input type="button" id= "delete" style="position:relative; width:100px; height:25px; z-index:10; left:988px; top:-6px; color: #28B7E7" value="删除"/>
+  	<input type="button" id= "importData" style="position:relative; width:100px; height:25px; z-index:10; left:988px; top:-6px; color: #28B7E7" value="导入数据"/>
+  	<br>
+  	<input type="button" id= "sortByUploadDate" style="position:relative; width:120px; height:25px; left:3px; top:-2px; color: #28B7E7" value="按上传日期排序↑"/>
+  	<input type="button" id= "sortByContractPeriod" style="position:relative; width:120px; height:25px; left:3px; top:-2px; color: #28B7E7" value="按合同期限排序↑"/>
+  	<input type="button" id= "downloadTemplate" style="position:relative;width:100px;height:25px;z-index:10;left:732px;top:-2px;color: #28B7E7" value="下载模板"/>
+  	<input type="button" id= "addData" onClick="addDataBox(1)" style="position:relative;width:100px;height:25px;z-index:10;left:732px;top:-2px;color: #28B7E7" value="增加"/>
+  	<input type="button" id= "derivedForm" style="position:relative;width:100px;height:25px;z-index:10;left:732px;top:-2px;color: #28B7E7" value="导出表格"/>
+  	<center>
+  		<table width="1350" border="0" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC" id="pageTable">
+    		<tbody>
+    			<tr>
+    				<th bgcolor="#28B7E7">
+    					<input type="checkbox" name="checkAll" id="checkAll" value="全选/全不选"/>
+    				</th>
+    				<th bgcolor="#28B7E7">序号</th>
+    				<th bgcolor="#28B7E7">流程编号</th>
+    				<th bgcolor="#28B7E7">合同名称</th>
+    				<th bgcolor="#28B7E7">合同甲方</th>
+    				<th bgcolor="#28B7E7">合同乙方</th>
+    				<th bgcolor="#28B7E7">合同类型</th>
+    				<th bgcolor="#28B7E7">签订日期</th>
+    				<th bgcolor="#28B7E7">到期时间</th>
+    				<th bgcolor="#28B7E7">上传时间</th>
+    				<th bgcolor="#28B7E7">合同金额</th>
+    				<th bgcolor="#28B7E7">经手部门</th>
+    				<th bgcolor="#28B7E7">经手人</th>
+    				<th bgcolor="#28B7E7">备注</th>
+    				<th bgcolor="#28B7E7">操作</th>
+    			</tr>
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">&nbsp;</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">泡泡</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">杀马特</td>
+    				<td bgcolor="#FFFFFF">滴滴</td>
+    				<td bgcolor="#FFFFFF">张三</td>
+    				<td bgcolor="#FFFFFF">尼古拉斯</td>
+    				<td bgcolor="#FFFFFF">赵四</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select> 
+					</td>
+    			</tr>
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">陈赫</td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">海波</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select>
+    				</td>
+    			</tr>
+    			
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">赵四</td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">海波</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select>
+    				</td>
+    			</tr>
+    			
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">海波</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select>
+    				</td>
+    			</tr>
+    			
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">海波</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select>
+    				</td>
+    			</tr>
+    			
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">海波</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select>
+    				</td>
+    			</tr>
+    			
+    			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">林丹</td>
+    				<td bgcolor="#FFFFFF">海波</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">凤姐</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">宝强</td>
+    				<td bgcolor="#FFFFFF">宋哲</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="上传" style="color:#28B7E7">上传</option>
+    						<option value="下载" style="color:#28B7E7">下载</option>
+    						<option value="查看" style="color:#28B7E7">查看</option>
+    						<option value="修改" style="color:#28B7E7">修改</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select>
+    				</td>
+    			</tr>
+    			
+    		</tbody>
+    	</table>
+   		<br> 	
+    	<span id="spanFirst"><a href="javascript:firstPage()">第一页</a></span>
+		<span id="spanPrevious"><a href="javascript:prePage()">上一页</a></span>
+		<span id="spanNext"><a href="javascript:nextPage()">下一页</a></span>
+		<span id="spanLast"><a href="javascript:lastPage()">最后一页</a></span><br>第
+		<span id="spanPageNum">&nbsp;</span>页/共
+		<span id="spanTotalPage">&nbsp;</span>页
+		<a>跳转到第
+			<input type="text" style="width:50px; height:25px; color: #28B7E7" name="number" id="number"/>&nbsp;页
+		</a>
+		<a href="javascript:goToPage()">
+			<input type="button" id="gotoPageSure" style="width:40px; height:25px; color: #28B7E7" value="确定"/>
+		</a>
+		
+		<!--
+  	 		点击增加按钮就会弹出的窗口
+  		-->
+		<div id='inputbox' class="box">
+        	<a class='x' href='' onclick="addDataBox(0); return false;">关闭</a>
+       		<br>
+       		流程编号  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		合同名称  <input type="text" id= "" style="position:relative;width:300px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		合同甲方  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		<br>
+       		合同乙方  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		合同类型  <input type="text" id= "" style="position:relative;width:80px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		签订日期  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		到期时间  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		上传时间  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		合同金额  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		经办部门  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		经办人  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		备注  <input type="text" id= "" style="position:relative;width:220px;height:26px;z-index:10;left:3px;top:-2px;color: #28B7E7" />&nbsp;&nbsp;
+       		
+       		<br>
+       		<input type="button" id="inputboxSure" value="确定"/>
+    </div>
+		
+  	</center>
+  	
+  	
+  	
+    
+   
+  </body>
+  
+  
+  <script type="text/javascript" language="javascript">
+  
+  	var theTable = document.getElementById("pageTable");			//这张表
+  	var spanFirst = document.getElementById("spanFirst");			//第一页
+  	var spanPre = document.getElementById("spanPrevious");			//上一页
+  	var spanNext = document.getElementById("spanNext");				//下一页
+  	var spanLast = document.getElementById("spanLast");				//最后一页
+  	var pageNum = document.getElementById("spanPageNum");			//第几页
+  	var totalPage = document.getElementById("spanTotalPage");		//总页数
+  	
+  	var totalRowsInTable = theTable.rows.length;	
+  	var pageSize = 6;												//每页显示的记录数
+  	var currentPage = 1;	
+
+  	
+  	
+  	/**
+	 * 下一页
+	 * 		
+	 */
+  	function nextPage() {
+  		
+  		hideTable();
+  		document.getElementById("number").setAttribute("text", null);
+  		var currentRow = pageSize * currentPage;					//当前行
+  		var maxRow = currentRow + pageSize;							//当前页最大行
+  		if(maxRow > totalRowsInTable) {								//如果下一页现实条目数不够pageSize，即maxRow大于totalTows，则将最大行置为总条目数
+  			maxRow = totalRowsInTable;
+  		}
+  		for(var i = currentRow; i < maxRow; i++) {
+  			theTable.rows[i].style.display = '';
+  		}
+  		currentPage ++;
+  		/* if(maxRow == totalRowsInTable) {
+  			nextText();
+  			//preText();
+  			//firstText();
+  			lastText();
+  		} */	
+  		
+  		showPage();
+  		if(1 == currentPage) {
+  			firstText();
+       		preText();
+        	nextLink();
+        	lastLink();
+  		} else if(totalPage == currentPage) {
+  			preLink();
+        	firstLink();
+        	nextText();
+        	lastText();
+  		} else {
+  			firstLink();
+        	preLink();
+        	nextLink();
+        	lastLink();
+  		}
+  		
+  		
+  		//preLink();
+  		
+  		//firstLink();
+  	}
+  	
+  	/**
+	 * 上一页
+	 * 		
+	 */
+	function prePage() {
+		hideTable();
+		
+		currentPage --;
+		var currentRow = pageSize * currentPage;
+		var maxRow = currentRow - pageSize;
+		if(currentRow > totalRowsInTable) {
+			currentRow = totalRowsInTable;
+		}
+		for(var i = maxRow; i < currentRow; i++) {
+			theTable.rows[i].style.display = '';
+		}
+		/* if(maxRow == 0) {
+			//preText();
+			nextText();
+			//firstText();
+			lastText();
+		} */
+		
+		showPage();
+		if(1 == currentPage) {
+  			firstText();
+       		preText();
+        	nextLink();
+        	lastLink();
+  		} else if(totalPage == currentPage) {
+  			preLink();
+        	firstLink();
+        	nextText();
+        	lastText();
+  		} else {
+  			firstLink();
+        	preLink();
+        	nextLink();
+        	lastLink();
+  		}
+		
+		/* nextLink();
+		lastLink(); */
+		
+	}
+	
+	/**
+	 * 第一页
+	 * 		
+	 */
+	function firstPage() {
+		hideTable();
+		currentPage = 1;
+		for(var i = 0; i < pageSize; i++) {
+			theTable.rows[i].style.display = '';
+		}
+		showPage();
+		firstText();
+		preText();
+		/* nextText();
+		lastText(); */
+		nextLink();
+		lastLink();
+			
+	}
+	
+	/**
+	 * 最后一页
+	 * 		
+	 */
+	function lastPage() {
+		hideTable();
+		currentPage = pageCount();
+		var currentRow = pageSize * (currentPage - 1);
+		for(var i = currentRow; i < totalRowsInTable; i++) {
+			theTable.rows[i].style.display = '';
+		}
+		showPage();
+		/* preText();
+		firstText(); */
+		
+		nextText();
+		lastText();
+		preLink();
+		
+		//nextText();
+		
+		
+		firstLink();	
+	}
+	
+	/**
+	 * 隐藏除了表头以外的所有行
+	 * 		
+	 */
+	function hideTable() {
+		for(var i = 1; i < totalRowsInTable; i++) {
+			theTable.rows[i].style.display = 'none';
+		}
+	}
+	
+	/**
+	 * 显示当前页
+	 * 		
+	 */	 
+  	function showPage() {
+  		pageNum.innerHTML = currentPage;
+  	}
+  	
+  	/**
+	 * 计算总页数
+	 * 		
+	 */
+  	function pageCount() {
+  		var count = 0;
+  		if(totalRowsInTable % pageSize != 0) {
+  			count = 1;
+  		}
+  		return parseInt(totalRowsInTable / pageSize) + count;
+  	}
+  	
+  	/**
+	 * 显示链接
+	 * 		
+	 */
+  	function preLink() {
+  		spanPre.innerHtml = "<a href='javascript:prePage();'>上一页</a>";
+  	}
+  	
+  	/**
+	 * 显示文本内容
+	 * 		
+	 */
+  	function preText() {
+  		spanPre.innerHtml = "上一页";
+  	}
+  	
+  	function nextLink() {
+  		spanPre.innerHtml = "<a href='javascript:nextPage();'>下一页</a>";
+  	}
+  	function nextText() {
+  		spanNext.innerHtml = "下一页";
+  	}
+  	
+  	function firstLink() {
+  		spanFirst.innerHtml = "<a href='javascript:firstPage();'>第一页</a>";
+  	}
+  	function firstText() {
+  		spanFirst.innerHtml = "第一页";
+  	}
+  	
+  	function lastLink() {
+  		spanLast.innerHtml = "<a href='javascript:lastPage();'>最后一页</a>";
+  	}
+  	function lastText() {
+  		spanLast.innerHtml = "最后一页";
+  	}
+  	
+  	/**
+	 * 隐藏表格
+	 * 		
+	 */
+  	function hide() {
+  		for(var i = pageSize; i < totalRowsInTable; i++) {
+			theTable.rows[i].style.display = 'none';
+		}
+		
+		totalPage.innerHtml = pageCount();
+		pageNum.innerHTML = '1';
+		nextLink();
+		lastLink();
+		
+		
+  	}
+  	hide();
+  	
+  	/**
+	 * 跳转到某一页
+	 * 		
+	 */
+  	function goToPage() {
+  		
+  		var gotoPageValue = parseInt(document.getElementById("number").value);
+  		if(document.getElementById("number").value.equals("")) {
+  			return false;
+  		}
+  		hideTable();
+  		var currentRow;
+  		var maxRow = 0;
+  		// 问题：如何将文本框的字符串改成数值型？
+  		if(gotoPageValue <= tatalPage && gotoPageValue > 0) {
+  			currentPage = gotoPageValue;
+  			currentRow = pageSize * (currentPage - 1);
+  			maxRow = currentRow + pageSize;
+  			if(maxRow > totalRowsInTable) {
+  				maxRow = totalRowsInTable;
+  			}
+			for(var i = maxRow; i < totalRowsInTable; i++) {
+  				theTable.rows[i].stytle.display = '';
+  			}
+			showPage();
+			if(currentPage != 1) {
+				preText();
+				lastText();
+				preLink();
+				lastLink();
+			}
+			if(currentPage != totalPage) {
+				nextText();
+				lastText();
+				nextLink();
+				lastLink();
+			};
+  		}; 
+  	}
+  	
+  	/**
+  	* 全选/全不选
+  	*
+  	*/
+  	document.getElementById("checkAll").onclick = function() {
+  		var itemsElements = document.getElementsByName("checkItems");
+  		if(document.getElementById("checkAll").getAttribute("checked")) {
+  			for(var i = 0; i < itemsElements.length; i++) {
+  				itemsElements[i].setAttribute("checked", "checked"); 
+  			};
+  		}else {
+  			for(var i = 0; i < itemsElements.length; i++) {
+  				itemsElements[i].setAttribute("checked", null); 
+  			};
+  		};
+  	};
+  	
+  	/*
+  	 给未上传按钮添加事件
+  	 	
+  	 */
+  	document.getElementById("notUpload").onclick = function() {
+  		
+  	
+  	}
+  	
+  	/*
+  	 给删除按钮添加事件
+  	 	
+  	 */
+  	document.getElementById("delete").onclick = function() {
+  		/*
+  			<tr>
+    				<td bgcolor="#FFFFFF"><input type="checkbox" name="checkItems" id="checkItems"/></td>
+    				<td bgcolor="#FFFFFF">&nbsp;</td>
+    				<td bgcolor="#FFFFFF">阿三</td>
+    				<td bgcolor="#FFFFFF">
+    					<select id="operation" name="operation">
+    						<option value="" style="color:#28B7E7">请选择...</option>
+    						<option value="删除" style="color:#28B7E7">删除</option>
+    					</select> 
+					</td>
+    			</tr>
+  		 */
+  		 /*  
+  		 	itemsElements :所有的checkbox
+  		 	trElement :对应表中某一合同数据行
+  		 	parentElement :trElement的父节点
+  		 */
+  		var itemsElements = document.getElementsByName("checkItems");
+  		
+  		for(var i = 0; i < itemsElements.length; i++) {
+  			var trElement = itemsElements[i].parentNode.parentNode;
+  			var flag = window.confirm("你确定要删除你所选中的合同的数据记录吗？");
+  			if(!flag) {
+  				return false;
+  			}else {
+  				var parenElement = trElement.parentNode;
+  				parentElement.removeChild(trElement);
+  				return false;
+  			}
+  		
+  		}
+  	
+  	}
+  	
+  	/*
+  	 给增加按钮添加事件
+  	 	
+  	 */
+  	function addDataBox(n) {
+  		//首先弹出输入框，可以输入合同相关明细，然后选择确定或取消按钮操作
+  		
+        document.getElementById('inputbox').style.display=n?'block':'none';     /* 点击按钮打开/关闭 对话框 */
+        
+        
+  	
+  	}
+  	
+  	/*
+  	 给导入数据按钮添加事件
+  	 	
+  	 */
+  	document.getElementById("importData").onclick = function() {
+  		
+  	
+  	}
+  	
+  	/*
+  	 给下载模板按钮添加事件
+  	 	
+  	 */
+  	document.getElementById("downloadTemplate").onclick = function() {
+  		
+  	
+  	}
+  	
+  	
+  	/*
+  	 给到导出表格添加事件
+  	 	
+  	 */
+  	document.getElementById("derivedForm").onclick = function() {
+  		
+  	
+  	}
+  	
+  	/*
+  	 给按上传日期排序按钮添加事件
+  	 	
+  	 */
+  	document.getElementById("sortByUploadDate").onclick = function() {
+  		
+  	
+  	}
+  	
+  	/*
+  	 给按合同期限按钮添加事件
+  	 
+  	 	
+  	 */
+  	document.getElementById("sortByContractPeriod").onclick = function() {
+  		
+  	
+  	}
+  		
+  	
+
+  </script>
+  
+</html>

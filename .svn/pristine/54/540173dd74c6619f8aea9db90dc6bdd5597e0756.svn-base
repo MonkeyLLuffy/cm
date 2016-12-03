@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title></title>
+	<meta charset="utf-8" />
+    <link href="../css/dataAnalysis.css" rel="stylesheet" />
+    <link href="../frame/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    
+  </head>
+  
+  <body>
+    
+	    	<div id="top">
+		        <span>
+			        <a class="address"> <span> 管理设置 </span> </a>
+			        <span class="address">  > </span>
+			        <a class="address"> <span> 基础设置  </span> </a>
+			        <span class="address">  > </span>
+			        <a class="address"> <span> 部门设置 </span> </a>
+		    	</span>
+	    	</div>
+	    	<div id="top_operation">
+	    		
+					<input type="radio" checked="checked" name="Sex" value="male" />年
+				
+					<input type="radio" name="Sex" value="female" />月
+	    			 
+	    			 <select id = "companyName" class="form-control" onchange="onCompanyChange(this.value)">
+	                	<option value = "1">部门1</option>
+	                	<option value = "2">部门1</option>
+	                	<option value = "3">部门1</option>
+	                	<option value = "4">部门1</option>
+                	</select>
+	    			
+	    	</div>    
+    <div id="div_content">
+    
+	    <div id="div_rankingList">
+		    <hr id="horizon">
+		    <hr id="vertical">
+	   	<!-- 排行榜 --> 
+		    <div id="ranking_left">
+			   <span style="color:yellow;font-size:18pt;"> 第13名</span></br>
+			   <span style="color:#FFFFFF;"> 贵公司签订的合同总数已达</br><span style="font-size:24pt;">13456</span>份</span></br>
+			    <span style="background-color:#B1ECFD;border-radius:10px;padding:2px;">截至2016年11月30日</span></br>
+		    </div>
+		    <div id="ranking_right">
+		    <img src="../img/signImg.jpg" style="width:180px;height:120px;">
+		    </div>
+		    <div id="ranking_bottom">
+		    <p style=" white-space: nowrap;position: absolute;top: 230px;left: 190px;background-color:#3DCFFA;color:#FFFFFF;">环比去年</p>
+		    
+		    <div style="position: absolute;top: 250px;left: 50px;color:#FFFFFF;">
+		    <img src="../img/shang_jiantou.png" style="width:15px;height:15px;">7
+		    <p>名次</p>
+		    </div>
+		    <div style="position: absolute;top: 250px;left: 190px;color:#FFFFFF;">
+		    + 70
+		    <p>份</p>
+		    </div>
+		    <div style="position: absolute;top: 250px;left: 330px;color:#FFFFFF;">
+		    <img src="../img/shang_jiantou.png" style="width:15px;height:15px;">30%
+		    <p>增幅</p>
+		    </div>
+		    </div>
+	    </div>
+	    
+	    <div id="div_lineMap">
+	   	<!-- 折线图 --> 
+	    
+
+
+
+
+
+	    
+	    </div>
+	    
+	    
+    </div>
+
+
+
+    <script src="../frame/jquery-3.1.1.js"></script>
+    <script src="../frame/jquery-3.1.1.min.js"></script>
+    <script src="../frame/echarts.js"></script>
+    <script src="../js/totalDataAnalysis.js"></script>
+  </body>
+</html>

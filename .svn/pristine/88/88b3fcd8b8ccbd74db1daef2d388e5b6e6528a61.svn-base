@@ -1,0 +1,12 @@
+package cn.dlb.cm.service.department;
+
+import cn.dlb.cm.entity.Department;
+
+public interface DepartmentService {
+
+	public String addDepartment(Department department);
+
+	public String deleteByID(Integer id);
+
+	
+}

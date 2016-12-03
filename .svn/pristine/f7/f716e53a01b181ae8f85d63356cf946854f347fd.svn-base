@@ -1,0 +1,13 @@
+
+
+$(function(){
+	$(".username").tooltip({
+		content:"请输入您的用户名",
+	});
+	
+	$(".password").tooltip({
+		content:"请输入您的密码",
+	});
+	
+	
+});

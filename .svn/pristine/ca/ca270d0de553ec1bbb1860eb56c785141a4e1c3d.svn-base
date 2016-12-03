@@ -1,0 +1,242 @@
+
+
+
+.data_background{
+	position: absolute;
+	width: 1150px;
+	height: 2000px;
+	background: #F0F9FD;
+	margin-top:0px;
+	padding-top:0px;
+	top: 0px;
+	left: 101px;
+}
+
+.data_header_font{
+	position: absolute;
+	color:#28B7E7;
+	top: 10px;
+	left: 12px;
+}
+.data_bnt_paixu_location{
+	position: absolute;
+	top: 55px;
+	left: 12px;
+}
+
+.data_bnt_operate_location{
+	position: absolute;
+	top: 15px;
+	left: 900px;
+}
+.table_location{
+	position: absolute;
+	top: 95px;
+	left: 10px;
+	width: 1130px;
+}
+th{
+	background: #29B7E7;
+	border: solid 1px #CCCCCC;
+	border-radius: 3px;
+	border-left: none;
+	border-right:none;
+	border-bottom:none;
+	height: 60px;
+	color: #FFFFFF;
+	font-size: 14;
+	font-style: normal;
+}
+.bnt_paixu{
+	width: 130px;
+	height: 28px;
+	background:#FFFFFF;
+	border:1px solid #797979;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.bnt_operate{
+	width: 70px;
+	height: 25px;
+	background: #28B7E7;
+	border: 0;
+	color: #D4EAF1;
+	border-radius: 6px;
+	font-size: 14px;
+	cursor: pointer;
+}
+td{
+	background: #FFFFFF;
+	border: solid 1px #E4E4E4;
+	border-radius: 3px;
+	border-left:none;
+	border-top:none;
+	height: 60px;
+	color: black;
+	font-size: 13;
+	font-style: normal;
+	font-family: Arial;
+}
+.operate{
+	width: 50px;
+	height: 30px;
+	margin-left: 0px;
+	cursor: pointer;
+}
+.paging{
+	position: absolute;
+	top: 1730px;
+	left: 530px;
+	width: 1200px;
+	height: 200px;
+	
+}
+.page_link{
+	color:#0066CC;
+	text-decoration:none;
+	cursor: pointer;
+	font-size: 14px;
+	display: block;
+	width:30px;
+	height: 23px;
+}
+.page_link_div{
+	border: #999999 solid 1px;
+	text-align:center;
+	line-height:23px;
+	width:30px;
+	height: 23px;
+	border-left: none;
+}
+.page_link_div:HOVER{
+	background: gray;
+}
+.left{
+	border-left: #999999 solid 1px;
+}
+.page_all{
+	float:left;
+}
+.page_bottomOrNext{
+	border: #999999 solid 1px;
+	line-height:23px;
+	width:75px;
+	height: 23px;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+}
+.page_bottomOrNext:HOVER{
+	background: gray;                            
+}
+.none:HOVER{
+	background: #F0F9FD;
+	cursor: auto;
+}
+.dian{
+	font-size:20px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.page_sub{
+	height: 23px;
+	width: 40px;
+	border:1px solid #CCCCCC;
+	border-radius: 3px;
+	background: #F0F9FD;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.page_textBox{
+	height: 22px;
+	width: 50px;
+	border:1px solid #CCCCCC;
+	margin: 0 5px 0 5px;
+}
+.pageNext{
+	color:#0066CC;
+	display: block;
+	width:75px;
+	height: 23px;
+	
+}
+.pageButton{
+	color:#0066CC;
+	display: block;
+	width:75px;
+	height: 23px;
+	
+}
+.importDateSortUp{
+	position: absolute;
+	top: 6px;
+	left: 112px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+	
+}
+.importDateSortDown{
+	position: absolute;
+	top: 7px;
+	left: 112px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+}
+.deadlineSortUp{
+	position: absolute;
+	top:6px;
+	left: 250px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+}
+.deadlineSortDown{
+	position: absolute;
+	top: 7px;
+	left: 250px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+}
+.signingDateSortUp{
+	position: absolute;
+	top: 6px;
+	left: 388px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+}
+.signingDateSortDown{
+	position: absolute;
+	top: 7px;
+	left: 386px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

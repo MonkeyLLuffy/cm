@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-13 23:34:57 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.Department" table="DEPARTMENT">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="dName" type="java.lang.String" access="field">
+            <column name="DNAME" />
+        </property>
+        <set name="users" inverse="false" lazy="true">
+            <key>
+                <column name="DID" />
+            </key>
+            <one-to-many class="cn.dlb.cm.entity.User" />
+        </set>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <many-to-one name="topDept" class="cn.dlb.cm.entity.Department" fetch="join">
+            <column name="TDID" />
+        </many-to-one>
+        <set name="childDept"  inverse="false" lazy="true">
+            <key>
+                <column name="TDID" />
+            </key>
+            <one-to-many class="cn.dlb.cm.entity.Department" />
+        </set>
+    </class>
+</hibernate-mapping>

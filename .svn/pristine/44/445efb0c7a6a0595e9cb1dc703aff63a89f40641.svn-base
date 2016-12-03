@@ -1,0 +1,187 @@
+/* login.jsp */
+/* -moz-box-shadow: 10px 10px 5px #888888; 老的 Firefox
+	box-shadow: 10px 10px 5px #888888; */
+.log {
+	float: left;
+	padding-left: 93px;
+	padding-right: 30px;
+	padding-top: 20px;
+}
+
+
+.logimg {
+	width: 310px;
+	height: 75px;
+}
+
+.cityImg{
+	position: absolute;
+	top: -15px;
+	left: 0px;
+	width: 1366;
+	height: 680px;
+}
+
+.shuxian {
+	position: absolute;
+	top: 30px;
+	left: 442px;
+	
+}
+
+.loginFont {
+	position: absolute;
+	top: 42px;
+	left: 473px;
+	text-align: center;
+	font-size: 43px;
+	display: block;
+	width: 260px;
+	height: 100px;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
+.mainImg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1366px;
+	height: 700px;
+}
+
+.loginLocation {
+	width: 350px;
+	height: 370px;
+	position: absolute;
+	top: 170px;
+	left: 840px;
+	background: #F5F9FC;
+	border-radius: 4px;
+	z-index:7000;
+	-moz-box-shadow: 2px 2px 2px #2196F3; /* 老的 Firefox */
+	 box-shadow: 2px 2px 2px #2196F3; 
+}
+.login_shuxian{
+	position: absolute;
+	top:250px;
+	left:873px;
+	border-top: solid 1px #EEEEEE;
+	height: 1px;
+	width: 280px;
+	box-shadow:inset 0 0 1px 1px #EEEEEE;
+	z-index: 8000;
+}
+.login_font{
+	position:absolute;
+	top:30px;
+	left:35px;
+	color: #444444;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	
+}
+
+.login_username_head{
+	position:absolute;
+	top:110px;
+	left:35px;
+	width: 40px;
+	height:49px;
+	background:blue;
+	z-index: 9000;
+	border-radius: 4px;  //圆角效果
+}
+.login_username{
+	position:absolute;
+	top:110px;
+	left:35px;
+	width: 270px;
+	height: 46px;
+	border: 1px solid #DDDDDD;
+	/* text-indent:35px; */
+	/* background: url(../img/用户.png) no-repeat;
+	background-size:11%;
+	background-position: left; */
+}
+.login_username::-webkit-input-placeholder{
+    color: #EFE4E4;
+    font-size: 15px;
+    line-height: 30px;
+    
+}
+.login_password::-webkit-input-placeholder{
+    color: #EFE4E4;
+    font-size: 15px;
+    line-height: 30px;
+    
+}
+
+.login_password{
+	position:absolute;
+	top:191px;
+	left:35px;
+	width: 270px;
+	height: 46px;
+	border: 1px solid #DDDDDD;
+}
+.login_submit{
+	color:#FFFFFF;
+	background: #2196F3;
+	position: absolute;
+	top: 300px;
+	left:35px;
+	width:270px;
+	height:45px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.login_rememberPass_location{
+	position: absolute;
+	top: 265px;
+	left:33px;
+	color:#2196F3;
+}
+
+
+
+/* main.jsp */
+.mainSearch {
+	position: absolute;
+	top: 30px;
+	left: 900px;
+}
+
+.mainHeader {
+	position: absolute;
+	top: 130px;
+	left: 100px;
+}
+
+.mainTable {
+	background: #29B7E7;
+	border: solid 1px #D4F9FF;
+	width: 1150px;
+	height: 38px;
+}
+
+.mainTableTh {
+	border: solid 1px #D4F9FF;
+	border-bottom: none;
+	border-top: none;
+	width: 200px;
+}
+
+.mainTableA {
+	text-decoration: none;
+	color: #D4F9FF;
+}
+
+.mainFont {
+	color: #1F228E;
+}
+
+.mainA {
+	text-decoration: none;
+	color: #1F228E;
+}

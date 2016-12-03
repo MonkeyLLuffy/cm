@@ -1,0 +1,19 @@
+package cn.dlb.cm.dao.recordHistory;
+
+import org.springframework.stereotype.Repository;
+
+import cn.dlb.cm.entity.PageBean;
+
+@Repository
+public class RecordHistoryDaoImpl implements RecordHistoryDao {
+
+	@Override
+	public PageBean getDownloadHistory(PageBean bean, String id,
+			String downUser, String contractName, String userType) {
+
+		StringBuilder HQL = new StringBuilder(
+				"select c.id ,c.contractName,c.partyA,c.partyB,c.contractType,u.username,u.trueName,u.isAdmin,u.downLoad FROM ContractRecord as c,User as u where ");
+		return null;
+	}
+
+}

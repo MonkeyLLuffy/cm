@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-24 23:08:23 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.SystemCode" table="SYSTEMCODE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="codeName" type="java.lang.String">
+            <column name="CODENAME" />
+        </property>
+        <property name="codeType" type="java.lang.String">
+            <column name="CODETYPE" />
+        </property>
+    </class>
+</hibernate-mapping>

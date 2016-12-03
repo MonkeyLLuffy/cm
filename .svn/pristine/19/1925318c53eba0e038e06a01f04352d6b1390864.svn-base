@@ -1,0 +1,17 @@
+package cn.dlb.cm.dao.user;
+
+import java.util.List;
+import java.util.Map;
+
+import cn.dlb.cm.base.dao.BaseDao;
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.entity.User;
+
+public interface UserDao extends BaseDao<User>{
+
+	User check(User user);
+	public Map<String, Object> getUserWithPaging(String condition, int rows, int page);
+	List<String> findAllDepart();
+	List<String> findAllContractType();
+	public int resetPassword(Integer id);
+}

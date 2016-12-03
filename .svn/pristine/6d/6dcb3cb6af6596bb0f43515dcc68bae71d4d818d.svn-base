@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../css/dataTable.css" rel="stylesheet" />
+	<link href="../css/paging.css" rel="stylesheet" />
+</head>
+<body>
+    <span>
+        <a class="address"> <span> 管理设置 </span> </a>
+        <span class="address">  > </span>
+        <a class="address"> <span> 基础设置  </span> </a>
+        <span class="address">  > </span>
+        <a class="address"> <span> 角色设置 </span> </a>
+    </span>
+
+    <div id="div_title">
+        <div id="div_operation">
+            <button class="btn_operation" onclick="add()">增加</button>
+            <button class="btn_operation" onclick="deleteAll()">删除</button>
+        </div>
+        <div id="div_search">
+            <input class="search_input" id="input_user" />
+            <button class="btn_operation" id="btn_search">搜索</button>
+        </div>
+    </div>
+
+    <!-- 数据表格 -->
+    <table id="roleSettingData" >
+        <tr>
+            <th>
+                <input type="checkbox" name="checkAll" id="checkAll" value="全选/全不选" />
+            </th>
+            <th><div class="div_long">序号</div></th>
+            <th><div class="div_long">角色名称</div></th>
+            <th><div class="div_longer">角色说明</div></th>
+            <th><div class="div_longer">操作</div></th>
+        </tr>
+        
+        <tbody id = "tableBody">
+        </tbody>
+    </table>
+    <div class="paging" id = "paging">
+	</div>
+    <!-- 修改角色的对话框 -->
+    <div id="dialog-setRole" title="创建新用户" style="display:none;">
+
+        <label>角色名称</label>
+        <input type="text" id="name" class="text ui-widget-content ui-corner-all">
+        <label>角色说明</label>
+        <input type="text" id="name" class="text ui-widget-content ui-corner-all">
+        <ul>
+            <li>数据汇总表</li>
+            <ul>
+
+                <li><input type="checkbox" value="增加" />增加</li>
+                <li><input type="checkbox" value="删除" />删除</li>
+                <li><input type="checkbox" value="修改" />修改</li>
+                <li><input type="checkbox" value="上传" />上传</li>
+                <li><input type="checkbox" value="下载" />下载</li>
+                <li><input type="checkbox" value="查看" />查看</li>
+                <li><input type="checkbox" value="导入数据" />导入数据</li>
+                <li><input type="checkbox" value="导出数据" />导出数据</li>
+            </ul>
+            <li>个人中心</li>
+            <ul>
+
+                <li><input type="checkbox" value="回收站" />修改密码</li>
+                <li><input type="checkbox" value="基础设置" />历史记录</li>
+                <ul>
+                    <li><input type="checkbox" value="基础设置" />上传记录</li>
+                    <li><input type="checkbox" value="部门设置" />下载记录</li>
+                    <li><input type="checkbox" value="角色设置" />导入记录</li>
+                    <li><input type="checkbox" value="部门设置" />导出记录</li>
+                    <li><input type="checkbox" value="部门设置" />修改记录</li>
+                </ul>
+
+                <li><input type="checkbox" value="角色设置" />数据统计</li>
+                <ul>
+                    <li><input type="checkbox" value="角色设置" />下载记录</li>
+                    <li><input type="checkbox" value="角色设置" />查看记录</li>
+                </ul>
+                <li><input type="checkbox" value="角色设置" />数据分析</li>
+            </ul>
+            <li>管理设置</li>
+            <ul>
+                <li><input type="checkbox" value="回收站" />回收站</li>
+                <li><input type="checkbox" value="基础设置" />基础设置</li>
+                <li><input type="checkbox" value="部门设置" />部门设置</li>
+                <li><input type="checkbox" value="角色设置" />角色设置</li>
+            </ul>
+        </ul>
+    </div>
+
+ <!-- 修改与新增的对话框 -->
+    <div id="dialog-form" title="创建新用户" style="display:none;">
+        <p class="validateTips">所有的表单字段都是必填的。</p>
+        <form>
+            <fieldset>
+                <label>角色名</label>
+                <input type="text" id="roleName" class="text ui-widget-content ui-corner-all">
+                <label>角色说明</label>
+                <input type="text" id="remark" class="text ui-widget-content ui-corner-all">
+            </fieldset>
+        </form>
+    </div>
+   
+    <script src="../frame/jquery-3.1.1.js"></script>
+    <script src="../frame/jquery-3.1.1.min.js"></script>
+    <link href="../frame/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <script src="../frame/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="../js/roleSetting.js"></script>
+</body>
+</html>

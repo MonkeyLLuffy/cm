@@ -1,0 +1,8 @@
+package cn.dlb.cm.dao.role;
+
+import cn.dlb.cm.base.dao.BaseDao;
+import cn.dlb.cm.entity.Role;
+
+public interface RoleDao extends BaseDao<Role>{
+
+}

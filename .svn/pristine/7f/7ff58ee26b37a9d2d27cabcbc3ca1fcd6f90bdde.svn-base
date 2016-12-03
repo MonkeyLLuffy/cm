@@ -1,0 +1,76 @@
+﻿$.ajax({
+    type: "POST",
+    url: "/cm/user/getUserWithPaging.action",
+    data:
+        {
+            page: 1,
+            rows: 10
+    },
+    async: true,
+    success: function (result) {
+        if (result && result != "") {
+        	
+            var json = eval(result);
+            for (var i in json) {
+                var d = json[i];
+                var num = i;
+                num = parseInt(num) + 1;
+                $('#userSettingData').append('<tr><td>' +
+                    '<input type="checkbox" class="checkItems" />' +
+                    '</td><td>' + num +
+                    '</td><td>' + d.USERNAME +
+                    '</td><td>' + d.ISADMIN +
+                    '</td><td>' + d.TRUENAME +
+                    '</td><td>' + d.DEPARTMENTNAME +
+                    '</td><td>' + d.TELEPHONE +
+                    '</td><td>' + d.EMAIL +
+                    '</td><td>' +
+                    '<a href="javascript:update(' + d.ID + ')"><span>修改</span></a></br>' +
+                    '<a href="javascript:uodatePassword(' + d.ID + ')"><span>修改密码</span></a>' +
+                    '</td></tr>');
+            }
+        }
+    },
+    error: function (data) {
+        alert("导入数据失败!");
+    }
+});
+
+function update(id) {
+    alert(id);
+}
+
+function uodatePassword(id) {
+    alert(id);
+}
+function addUser() {
+    $("#dialog-form").dialog("open");
+}
+    $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 500,
+        width: 300,
+        modal: true,
+        buttons: {
+            "创建一个帐户": function () {
+
+
+                alert("创建成功");
+                $(this).dialog("close");
+                
+            },
+            Cancel: function () {
+                alert("取消");
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            alert("关闭");
+        }
+    });
+
+
+// 刷新页面
+function PageReload() {
+    $('#dg').datagrid('reload');
+}

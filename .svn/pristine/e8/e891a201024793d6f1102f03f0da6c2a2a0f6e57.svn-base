@@ -1,0 +1,11 @@
+
+
+$(function(){
+	$(".main_jianTou").click(function(){
+		$(".gaojiSerach").show();
+	});
+	
+	
+	
+	
+});

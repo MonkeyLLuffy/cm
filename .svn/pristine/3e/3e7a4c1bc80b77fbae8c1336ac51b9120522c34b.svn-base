@@ -1,0 +1,64 @@
+package cn.dlb.cm.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Privilege {
+	private Integer id;
+	private String pName;
+	private String url;
+	private Set<Role> roles=new HashSet<>();
+	private Privilege topPrivilege;
+	private Set<Privilege> childPrivilege=new HashSet<>();
+	public Privilege() {
+		super();
+	}
+	public Privilege(String pname, String url, Privilege topPrivilege) {
+		super();
+		this.pName = pname;
+		this.url = url;
+		this.topPrivilege = topPrivilege;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	public Privilege getTopPrivilege() {
+		return topPrivilege;
+	}
+	public void setTopPrivilege(Privilege topPrivilege) {
+		this.topPrivilege = topPrivilege;
+	}
+	public Set<Privilege> getChildPrivilege() {
+		return childPrivilege;
+	}
+	public void setChildPrivilege(Set<Privilege> childPrivilege) {
+		this.childPrivilege = childPrivilege;
+	}
+	@Override
+	public String toString() {
+		return "Privilege [id=" + id + ", pName=" + pName + ", url=" + url + "]";
+	}
+	
+	
+}

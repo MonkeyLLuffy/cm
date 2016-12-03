@@ -1,0 +1,77 @@
+package cn.dlb.cm.base.dao;
+
+import java.lang.reflect.ParameterizedType;
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+@SuppressWarnings("unchecked")
+public class BaseDaoImpl<T> implements BaseDao<T>{
+	/**
+	 * 通过反射得到传过来的class类型
+	 * */
+	private Class<T> clazz;
+	
+	public BaseDaoImpl(){
+		ParameterizedType type=(ParameterizedType) this.getClass().getGenericSuperclass();
+		this.clazz=(Class<T>) type.getActualTypeArguments()[0];
+	}
+	
+	/**
+	 * hibernate获取session
+	 * */
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	
+	public void delete(Integer id) {
+		T t=getById(id);
+		getSession().delete(t);
+	}
+
+	@Override
+	public void add(T t) {
+		getSession().save(t);
+	}
+
+	@Override
+	public void update(T t) {
+		getSession().update(t);
+	}
+
+	@Override
+	public T getById(Integer id) {
+		T t=(T) getSession().createQuery("from "+clazz.getSimpleName()+" where id=?").setParameter(0, id).getSingleResult();
+		return t;
+	}
+	
+	public List<T> findAll() {
+		List<T> list = getSession().createQuery("FROM " + clazz.getSimpleName()).getResultList();
+		return list;
+	}
+
+	@Override
+	public List<T> getByIds(Integer[] ids) {
+		if(ids==null){
+			return Collections.EMPTY_LIST;
+		}else{
+		List<T> list = getSession()//
+				.createQuery("FROM " + clazz.getSimpleName() + " WHERE id in (:ids)")//
+						.setParameterList("ids", ids) //
+				.getResultList();
+		return list;
+		}
+	}
+
+	
+
+}

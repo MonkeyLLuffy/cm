@@ -1,0 +1,180 @@
+package cn.dlb.cm.dao.contractRecord;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.transform.Transformers;
+import org.springframework.stereotype.Repository;
+
+import cn.dlb.cm.base.dao.BaseDaoImpl;
+import cn.dlb.cm.entity.ContractRecord;
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.entity.Query_ContractRecord;
+
+@Repository
+public class contractRecordDaoImpl extends BaseDaoImpl<ContractRecord>
+		implements ContractRecordDao {
+
+	/**路遥
+	 * 
+	 * 高级搜索部分
+	 */
+	@Override
+	public PageBean findadvancedSearch(Query_ContractRecord contractRecord,
+			PageBean pageBean, java.sql.Date signingDateStartSQL,
+			java.sql.Date signingDateEndSQL, java.sql.Date importDateStartSQL,
+			java.sql.Date importDateEndSQL, java.sql.Date deadlineStartSQL,
+			java.sql.Date deadlineEndSQL,String importDateSort,String signingDateSort,String deadlineSort,String notUpload) {
+		
+		//动态拼接搜索条件
+		StringBuilder HQL = new StringBuilder("FROM ContractRecord where 1=1");
+		if (contractRecord.getId() != null
+				&& !"".equals(contractRecord.getId())) {
+			HQL.append(" and ID like '%" + contractRecord.getId() + "%'");
+		}
+		if (contractRecord.getContractName() != null
+				&& !"".equals(contractRecord.getContractName())) {
+			HQL.append(" and CONTRACTNAME like '%" + contractRecord.getContractName()
+					+ "%'");
+		}
+		if (contractRecord.getPartyA() != null
+				&& !"".equals(contractRecord.getPartyA())) {
+			HQL.append(" and PARTYA like '%" + contractRecord.getPartyA()
+					+ "%'");
+		}
+		if (contractRecord.getPartyB() != null
+				&& !"".equals(contractRecord.getPartyB())) {
+			HQL.append(" and PARTYB like '%" + contractRecord.getPartyB()
+					+ "%'");
+		}
+		if (contractRecord.getContractAmount() != null
+				&& !"".equals(contractRecord.getContractAmount())) {
+			HQL.append(" and CONTRACTAMOUNT like '%"
+					+ contractRecord.getContractAmount() + "%'");
+		}
+		if (contractRecord.getOperator() != null
+				&& !"".equals(contractRecord.getOperator())) {
+			HQL.append(" and OPERATOR like '%" + contractRecord.getOperator()
+					+ "%'");
+		}
+		if (contractRecord.getDepart() != null
+				&& !"".equals(contractRecord.getDepart())) {
+			HQL.append(" and DEPART like '%" + contractRecord.getDepart() + "%'");
+		}
+		if (contractRecord.getContractType() != null
+				&& !"".equals(contractRecord.getContractType())) {
+			HQL.append(" and CONTRACTTYPE = '"
+					+ contractRecord.getContractType() + "'");
+		}
+		if (notUpload != null
+				&& !"".equals(notUpload)) {
+			HQL.append(" and CONTRACTFILE = null");
+		}else{
+			HQL.append(" and state = 1");
+		}
+		if (signingDateStartSQL != null && signingDateEndSQL != null) {
+			HQL.append(" and SIGNINGDATE between '" + signingDateStartSQL + "' and '"
+					+ signingDateEndSQL  + "'");
+		}
+		if (importDateStartSQL != null && importDateEndSQL != null) {
+			HQL.append(" and IMPORTDATE between '" + importDateStartSQL + "' and '"
+					+ importDateEndSQL + "'");
+		}
+		if (deadlineStartSQL != null && deadlineEndSQL  != null) {
+			HQL.append(" and DEADLINE between '" + deadlineStartSQL + "' and '"
+					+ deadlineEndSQL + "'");
+		}
+		
+		StringBuilder count = new StringBuilder("select count(*) ");
+		count.append(HQL);
+		//获取总记录数
+		Long _recordNum = (Long) getSession().createQuery(count.toString())
+				.uniqueResult();
+		int recordNum = _recordNum.intValue();
+		
+		//排序
+		if(importDateSort==null&&signingDateSort==null&&deadlineSort==null){
+			HQL.append(" order by importDate desc");
+		}else if(importDateSort!=null){
+			HQL.append(" order by importDate "+importDateSort);
+		}else if(signingDateSort!=null){
+			HQL.append(" order by importDate "+signingDateSort);
+		}else if(deadlineSort!=null){
+			HQL.append(" order by importDate "+deadlineSort);
+		}
+		//获得当前页数据
+		System.out.println("--------------"+HQL);
+		List<ContractRecord> list = getSession()
+				.createQuery(HQL.toString())
+				.setFirstResult(
+						(pageBean.getCurrentPage() - 1)
+								* pageBean.getPageSize())
+				.setMaxResults(pageBean.getPageSize()).getResultList();
+
+		PageBean newPageBean = new PageBean(pageBean.getCurrentPage(),
+				pageBean.getPageSize(), recordNum, list);
+		return newPageBean;
+	}
+
+	
+	public void delete(String id) {
+		ContractRecord contractRecord=getById(id);
+		contractRecord.setState(0);
+		getSession().update(contractRecord);
+	}
+
+	private ContractRecord getById(String id) {
+		return (ContractRecord) getSession().createQuery("from ContractRecord where id=?")//
+				.setParameter(0, id).uniqueResult();
+	}
+
+
+	@Override
+	public Map<String, Object> getRecycleBinData(String condition, int rows,
+			int page) {
+		// TODO Auto-generated method stub
+		//DATE_FORMAT(file_record.UPLOADTIME,\"%Y-%m-%d\")  as UPLOADTIME
+		int start = (page-1)* rows ;
+		List<Map<String, Object>> list=this.getSession()
+				.createSQLQuery("select ContractRecord.id as id," +
+						"ContractRecord.contractNum as contractNum," +
+						"ContractRecord.contractName as contractName," +
+						"ContractRecord.partyA as partyA," +
+						"ContractRecord.partyB as partyB," +
+						"ContractRecord.contractType as contractType," +
+						"ContractRecord.contractAmount as contractAmount," +
+						"ContractRecord.depart as depart," +
+						"ContractRecord.operator as operator," +
+						"ContractRecord.remark as remark," +
+						"ContractRecord.state as state," +
+						"DATE_FORMAT(ContractRecord.signingDate,\"%Y/%m/%d\")as signingDate," +
+						"DATE_FORMAT(ContractRecord.deadline,\"%Y/%m/%d\")as deadline," +
+						"DATE_FORMAT(ContractRecord.importDate,\"%Y/%m/%d\")as importDate" +
+						" from ContractRecord where state=0")
+				.setFirstResult(start)
+				.setMaxResults(rows).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP)
+				.getResultList();
+		Long total = (Long)this.getSession().createQuery("select count(*) as total from ContractRecord where state = 1").getSingleResult();
+		if(list.size()==0){
+			return null;
+		}else{
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("data", list);
+			map.put("total", total);
+			map.put("totalPage", total/rows);
+			return map;
+		}
+	}
+
+
+	//批量将文件记录加入到回收站
+	public void deleteManyRecord(String[] id) {
+		List <ContractRecord> conList=this.getByIds(id);
+		for (ContractRecord contractRecord : conList) {
+			contractRecord.setState(0);
+			getSession().update(contractRecord);
+		}
+	}
+
+}

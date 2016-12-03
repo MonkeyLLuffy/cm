@@ -1,0 +1,47 @@
+package cn.dlb.cm.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Role {
+	private Integer id;
+	private String rName;
+	private Set<User> users=new HashSet<>();
+	private Set<Privilege> privileges=new HashSet<>();
+	private String description;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getrName() {
+		return rName;
+	}
+	public void setrName(String rName) {
+		this.rName = rName;
+	}
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	public Set<Privilege> getPrivileges() {
+		return privileges;
+	}
+	public void setPrivileges(Set<Privilege> privileges) {
+		this.privileges = privileges;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", rName=" + rName + ", description=" + description + "]";
+	}
+	
+}

@@ -1,0 +1,10 @@
+package cn.dlb.cm.dao.department;
+
+import cn.dlb.cm.base.dao.BaseDao;
+import cn.dlb.cm.entity.Department;
+
+public interface DepartmentDao extends BaseDao<Department> {
+
+	public String getDepartmentWithPaging(String condition, int rows, int page);
+	
+}

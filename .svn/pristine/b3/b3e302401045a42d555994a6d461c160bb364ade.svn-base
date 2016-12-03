@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 16:38:02 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.Permission" table="PERMISSION">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="permissionName" type="java.lang.String">
+            <column name="PERMISSIONNAME" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" />
+        </property>
+        <many-to-one name="parent" class="cn.dlb.cm.entity.Permission" fetch="join">
+            <column name="PERMISSION" />
+        </many-to-one>
+        <set name="children"  inverse="false" lazy="true">
+            <key>
+                <column name="PERMISSION" />
+            </key>
+            <one-to-many class="cn.dlb.cm.entity.Permission" />
+        </set>
+        <set name="roles" table="ROLE_PERMISSION" inverse="false" lazy="true">
+            <key>
+                <column name="PERMISSION" />
+            </key>
+            <many-to-many class="cn.dlb.cm.entity.Role" column="ROLE"/>
+        </set>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+    </class>
+</hibernate-mapping>

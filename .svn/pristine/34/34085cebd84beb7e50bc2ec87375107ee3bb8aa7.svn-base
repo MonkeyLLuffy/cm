@@ -1,0 +1,16 @@
+
+
+$(function(){
+	$(".login_username").tooltip({
+		content:"请输入您的用户名",
+	});
+	
+	$(".login_password").tooltip({
+		content:"请输入您的密码",
+	});
+	
+	$(".login_username").click(function(){
+		$(".login_username_head").css("width","");
+	});
+	
+});

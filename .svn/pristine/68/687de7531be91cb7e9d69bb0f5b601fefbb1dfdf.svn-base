@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+	<link href="../css/dataTable.css" rel="stylesheet" />
+	<link href="../css/paging.css" rel="stylesheet" />
+    <style>
+      .page_link_div page_all left{
+      }
+      select{
+      	margin-bottom: 12px;
+    	width: 99%;
+    	padding: .4em;
+    	border: 1px solid #ddd;
+    	background: #fff;
+    	color: #333;
+    	border-radius: 3px;
+    }
+
+    </style>
+</head>
+<body>
+  
+    <div id="div_title">
+     
+        <div id="div_operation">
+	         <span>
+		        <a class="address"> <span> 管理设置 </span> </a> 
+		         <span class="address">  > </span> 
+		        <a class="address"> <span> 基础设置  </span> </a> 
+		        <span class="address">  > </span>
+		        <a class="address"> <span> 用户设置 </span> </a>
+		    </span>
+		    </br>
+            <button class="btn_operation" onclick="add()">增加</button>
+            <button class="btn_operation"  onclick="deleteAll()">删除</button>
+        </div>
+        <div  id="div_search">
+         </br>
+          </br>
+            <input class="search_input" id="input_user" style="position:relative;left:197px;top:0px;" />
+            <button class="btn_operation" id="btn_search" style="position:relative;left:197px;top:0px;" >搜索</button>
+        </div>
+    </div>
+    
+    <!-- 修改与新增的对话框 -->
+    <div id="dialog-form" title="新增用户" style="display:none;">
+            <p class="validateTips">带红色*号的都是必填的。</p>
+        <form>
+            <fieldset>
+                <label>用户名</label><span style="color:red;">*</span>
+                <input type="text" id="name" class="text ui-widget-content ui-corner-all">
+                <label>用户身份</label><span style="color:red;">*</span>
+                <input type="text" id="idetify" class="text ui-widget-content ui-corner-all">
+                <label for="trueName">名字</label><span style="color:red;">*</span>
+                <input type="text" id="trueName" class="text ui-widget-content ui-corner-all">
+                <label for="department">所属部门</label><span style="color:red;">*</span>
+                <select id = "departmentName" class="form-control" onchange="onSelectChange(this.value)">
+                <option value = "1">部门1</option>
+                </select>
+                <label for="telephone">联系方式</label><span style="color:red;">*</span>
+                <input type="text" id="telephone" class="text ui-widget-content ui-corner-all">
+                <label for="email">电子邮件</label><span style="color:red;">*</span>
+                <input type="text" id="email" class="text ui-widget-content ui-corner-all">
+            </fieldset>
+        </form>
+    </div>
+    <!-- 删除对话框 -->
+	<div id="dialog-confirm-delete" title="删除这个用户吗？" style="display:none;">
+	  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这些用户将被永久删除，并且无法恢复。您确定吗？</p>
+	</div>
+	<!-- 删除对话框 -->
+	<div id="dialog-confirm-reset" title="重置密码吗" style="display:none;">
+	  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>将会重置为初始密码。您确定吗？</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+    <!-- 数据表格 -->
+    <table id="userSettingData">
+        <tr>
+            <th>
+                <input type="checkbox" name="checkAll" id="checkAll"  value="全选/全不选" />
+            </th>
+            <th><div class="div_short">序号</div></th>
+            <th><div class="div_short">用户名</div></th>
+            <th><div class="div_long">用户身份</div></th>
+            <th><div class="div_middle">姓名</div></th>
+            <th><div class="div_short">所属部门</div></th>
+            <th><div class="div_short">联系方式</div></th>
+            <th><div class="div_middle">邮件</div></th>
+            <th><div class="div_short">操作</div></th>
+        </tr>
+        <tbody id = "tableBody">
+        </tbody>
+    </table>
+    
+    <div class="paging" id = "paging">
+	</div>
+    
+    
+    <script src="../frame/jquery-3.1.1.js"></script>
+    <script src="../frame/jquery-3.1.1.min.js"></script>
+    <link href="../frame/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <script src="../frame/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="../js/userSetting.js"></script>
+ 
+</body>
+
+</html>

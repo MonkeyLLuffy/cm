@@ -1,0 +1,128 @@
+body {
+    font-family: Arial;
+    font-size:13px;
+    height: 100%;
+}
+ /*
+     border-collapse:collapse; 表示边框合并在一起。
+     border-collapse:separate;表示边框之间的间距,
+     间距的大小用border-spacing:px;定义大小。
+ */
+table {
+    border:none;
+    width:900px;
+    border-collapse: separate;
+    border-spacing:1px;
+    background-color:#CCCCCC;
+    word-break:break-all;
+}
+
+.div_short {
+width:40px;
+}
+.div_middle {
+width:100px;
+}
+.div_long {
+width:120px;
+}
+.div_longer {
+width:200px;
+}
+div {
+}
+td {
+    background-color:#FFFFFF;
+    text-align:center;
+}
+th {
+    background-color:#28B7E7;
+    color:#FFFFFF;
+}
+th, td {
+    padding:2px 2px;
+}
+a {
+    color:#0066CC;
+    text-decoration:none;
+}
+.address{
+        color:#28B7E7;
+        font-family:Arial;
+        font-size:16px;
+   }
+
+	.btn_operation {
+	    background-color:#28B7E7;
+	    color:#FFFFFF;
+	    border-radius:10px;
+	    border:none;
+	    padding:5px 15px;
+		margin-top:10px;
+	}
+
+ .search_input {
+            border-radius:3px;
+            border:#28B7E7 1px solid;
+           height:19px;
+            margin:0px;
+        }
+        #btn_search {
+            margin:0px;
+            margin-left:-18px;
+        }
+        #btn_save {
+            margin:0px;
+        }
+        #btn_reset {
+            margin:0px;
+        }
+        #btn_back {
+            margin:0px;
+        }
+       #div_title {
+        width:100%;
+        height:60px;
+        padding-bottom:0px;
+        vertical-align:central;
+        }
+       #div_search {
+        float:left;
+        margin-left:280px;
+        }
+
+        #div_operation {
+        float:left;
+        }
+ 
+        /* 改变对话框的titlebar的颜色 */
+        /*.ui-dialog .ui-dialog-titlebar{ 
+            background-color:#28B7E7;
+            color:#FFFFFF;
+    		border-radius:0px;
+        }
+        .ui-dialog .ui-dialog-buttonpane button {
+            background-color:#28B7E7;
+            color:#FFFFFF;
+        }
+        .ui-dialog .ui-dialog-content {
+        background-color:#F4F4F4;
+        }
+        .ui-dialog{
+        	padding: 0px;
+        }*/
+        /*
+            对话框里面的样式
+        */
+    input.text { 
+        margin-bottom:12px;
+         width:95%; 
+         padding: .4em; 
+
+    }
+    fieldset {
+         padding:0;
+          border:0; 
+         margin-top:25px;
+
+    }

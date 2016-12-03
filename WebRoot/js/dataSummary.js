@@ -1,0 +1,115 @@
+
+$(function() {
+	if ($("tr").size() != 27) {
+		$(".paging").css("left", 612 + "px");
+	}
+	
+	//动态添加表格
+	var table = document.getElementById("dataTable");
+	for ( var i = 0, t = $("tr").size(); i < 27 - t; i++) {
+		var tr = document.createElement("tr");
+		var td1 = document.createElement("td");
+		var td2 = document.createElement("td");
+		var td3 = document.createElement("td");
+		var td4 = document.createElement("td");
+		var td5 = document.createElement("td");
+		var td6 = document.createElement("td");
+		var td7 = document.createElement("td");
+		var td8 = document.createElement("td");
+		var td9 = document.createElement("td");
+		var td10 = document.createElement("td");
+		var td11 = document.createElement("td");
+		var td12 = document.createElement("td");
+		var td13 = document.createElement("td");
+		var td14 = document.createElement("td");
+		var td15 = document.createElement("td");
+		var td16 = document.createElement("td");
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+		tr.appendChild(td6);
+		tr.appendChild(td7);
+		tr.appendChild(td8);
+		tr.appendChild(td9);
+		tr.appendChild(td10);
+		tr.appendChild(td11);
+		tr.appendChild(td12);
+		tr.appendChild(td13);
+		tr.appendChild(td14);
+		tr.appendChild(td15);
+		tr.appendChild(td16);
+		table.appendChild(tr);
+
+	}
+	
+	//复选框全选
+	$('.checkAll').change(function(){        
+		if($('.checkAll').prop("checked")){
+			//全选
+			 $("[name = id]:checkbox").prop("checked", true);
+		}else{
+			//全不选
+			 $("[name = id]:checkbox").prop("checked", false);
+		}
+	});
+	
+	$(".check").click(function(){
+		 //当没有选中某个子复选框时，SelectAll取消选中  
+	    if (!$(".check").checked) {  
+	        $(".checkAll").prop("checked", false);  
+	    }  
+	    var chsub = $("[name = id]:checkbox").length; //获取subcheck的个数  
+	    var checkedsub = $("[name = id]:checkbox:checked").length; //获取选中的subcheck的个数  
+	    if (checkedsub == chsub) {  
+	        $(".checkAll").prop("checked", true);  
+	    }
+	});
+	
+	//未上传
+	$(".noupload").click(function (){
+		document.getElementById("data_topLeft_btn").action="/cm/contractRecord/advancedSearch.action?notUpload=true";
+		document.getElementById("data_topLeft_btn").submit();
+	});
+	
+	//下载模板
+	$(".downloadModel").click(function(){
+		document.getElementById("data_topLeft_btn").action="/cm/contractRecord/downloadModel.action";
+		document.getElementById("data_topLeft_btn").submit();
+	});
+	
+	//输出数据
+	$(".outputData").click(function(){
+		document.getElementById("id_form").action="/cm/contractRecord/outputData.action";
+		document.getElementById("id_form").submit();
+	});
+	
+	//删除多条数据
+	$(".delete").click(function (){
+		if(confirm("确定要删除这几条么?(数据将进入回收站)")){
+			document.getElementById("id_form").action="/cm//contractRecord/deleteMany.action";
+			document.getElementById("id_form").submit();
+		}
+	});
+	
+	//增加单条数据
+	$(".add").click(function(){
+		$(".add_position").show();
+	});
+	
+	//导入数据
+	$(".importData").click(function(){
+		$(".input_location").show();
+	});
+	$(".input_sub").click(function(){
+		document.getElementById("imput_form").submit();
+	});
+	$(".input_close").click(function(){
+		$(".input_location").show();
+	});
+	
+	
+	
+	
+});

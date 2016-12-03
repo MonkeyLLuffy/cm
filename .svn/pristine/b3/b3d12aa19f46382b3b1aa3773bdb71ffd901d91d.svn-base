@@ -1,0 +1,297 @@
+/* login.jsp */
+/* -moz-box-shadow: 10px 10px 5px #888888; 老的 Firefox
+	box-shadow: 10px 10px 5px #888888; */
+.log {
+	float: left;
+	padding-left: 93px;
+	padding-right: 30px;
+	padding-top: 20px;
+	
+}
+
+.logimg {
+	width: 310px;
+	height: 75px;
+}
+
+.cityImg{
+	position: absolute;
+	top: -15px;
+	left: 0px;
+	width: 1366;
+	height: 680px;
+}
+
+.shuxian {
+	position: absolute;
+	top: 30px;
+	left: 442px;
+	
+}
+
+.loginFont {
+	position: absolute;
+	top: 42px;
+	left: 473px;
+	text-align: center;
+	font-size: 43px;
+	display: block;
+	width: 260px;
+	height: 100px;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
+.mainImg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1366px;
+	height: 700px;
+}
+
+.loginLocation {
+	width: 350px;
+	height: 370px;
+	position: absolute;
+	top: 170px;
+	left: 840px;
+	background: #F5F9FC;
+	border-radius: 4px;
+	z-index:7000;
+	/* -moz-box-shadow: 2px 2px 2px #2196F3; 老的 Firefox
+	 box-shadow: 2px 2px 2px #2196F3;  */
+}
+.login_shuxian{
+	position: absolute;
+	top:250px;
+	left:873px;
+	border-top: solid 1px #EEEEEE;
+	height: 1px;
+	width: 273px;
+	box-shadow:inset 0 0 1px 1px #EEEEEE;  /* 凹凸效果 */
+	z-index: 8000;
+}
+.login_font{
+	position:absolute;
+	top:34px;
+	left:36px;
+	color: #444444;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	
+}
+
+.login_username_head{
+	position:absolute;
+	top:110px;
+	left:35px;
+	width: 0px;
+	height:49px;
+	background:#009FE7;
+	z-index: 9000;
+	border-radius: 4px 0 0 4px;
+	/* border-radius: 4px  0 0 4px; */  //圆角效果
+}
+.login_password_head{
+	position:absolute;
+	top:192px;
+	left:35px;
+	width: 0px;
+	height:49px;
+	background:#009FE7;
+	z-index: 9000;
+	border-radius: 4px 0 0 4px;
+	/* border-radius: 4px  0 0 4px; */  //圆角效果
+}
+.login_user_img{
+	position:absolute;
+	top:125px;
+	left:45px;
+	width: 22px;
+	height: 20px;
+	z-index: 8003
+}
+.login_password_img{
+	position:absolute;
+	top:206px;
+	left:46px;
+	width: 21px;
+	height: 21px;
+	z-index: 8003
+}
+.login_username{
+	position:absolute;
+	top:110px;
+	left:35px;
+	width: 270px;
+	height: 46px;
+	border: 1px solid #DDDDDD;
+	font-size: 16px;
+	text-indent:8px;
+	border-radius: 4px;
+	/* text-indent:35px; */
+	/* background: url(../img/用户.png) no-repeat;
+	background-size:11%;
+	background-position: left; */
+}
+
+.login_username::-webkit-input-placeholder{
+    color: #EFE4E4;
+    font-size: 16px;
+    line-height: 30px;
+    
+}
+.login_username::-webkit-input-placeholder :FOCUS{
+    color: gray;
+    font-size: 16px;
+    line-height: 30px;
+    
+}
+.login_password::-webkit-input-placeholder{
+    color: #EFE4E4;
+    font-size: 16px;
+    line-height: 30px;
+    
+}
+.login_password{
+	position:absolute;
+	top:191px;
+	left:35px;
+	width: 270px;
+	height: 46px;
+	border: 1px solid #DDDDDD;
+	font-size: 16px;
+	text-indent:8px;
+	border-radius: 4px;
+}
+.login_submit{
+	color:#FFFFFF;
+	background: #2196F3;
+	position: absolute;
+	font-size:18px;
+	top: 300px;
+	left:35px;
+	width:273px;
+	height:45px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	z-index: 9991;
+}
+
+
+.login_rememberPass_location{
+	position: absolute;
+	top: 261px;
+	left:33px;
+	color:#2196F3;
+	width: 100px;
+}
+
+.test{
+	position:absolute;
+	top:230px;
+	left:975px;
+	width:80px;
+	height:80px;
+	z-index: 9999;
+}
+.yes{
+	position:absolute;
+	top:230px;
+	left:975px;
+	width:80px;
+	height:80px;
+	z-index: 9999;
+}
+
+
+
+/* main.jsp */
+.main_serach_location{
+	position: absolute;
+	top:37px;
+	left: 870px;
+	width: 400px;
+	height: 250px;
+}
+.main_serach_fontLocation{
+	position: absolute;
+	top:-15px;
+	left: 250px;
+}
+.main_textBoxLocation{
+	position: absolute;
+	top:20px;
+	left: 50px;
+}
+.main_font{
+	font-size: 17px;
+	color:#199ED8;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.main_tuichu{
+	color:#199ED8;
+	text-decoration: none;
+	font-size: 17px;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.main_tuichu:HOVER{
+	text-decoration: underline;
+}
+.main_searchTextBox{
+	width: 250px;
+	height: 44px;
+	border: 2px solid #29B7E7 ;
+	border-right: none;
+	font-size: 19px;
+}
+.main_searchBtn{
+	position: absolute;
+	top: 0px;
+	left: 250px;
+	width: 80px;
+	height: 44px;
+	border: 2px solid #29B7E7 ;
+	background: #199ED8;
+}
+
+.main_jianTou{
+	position: absolute;
+	top: 12px;
+	left: 224px;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+}
+
+
+.mainHeader {
+	position: absolute;
+	top: 130px;
+	left: 100px;
+}
+
+.mainTable {
+	background: #29B7E7;
+	border: solid 1px #D4F9FF;
+	width: 1150px;
+	height: 38px;
+}
+
+.mainTableTh {
+	border: solid 1px #D4F9FF;
+	border-bottom: none;
+	border-top: none;
+	width: 200px;
+}
+
+.mainTableA {
+	text-decoration: none;
+	color: #D4F9FF;
+	
+}
+
+
+
+
+

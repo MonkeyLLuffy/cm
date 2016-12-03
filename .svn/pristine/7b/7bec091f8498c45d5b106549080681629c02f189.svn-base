@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../css/dataTable.css" rel="stylesheet" />
+	<link href="../css/paging.css" rel="stylesheet" />
+	<link href="../css/dataTable.css" rel="stylesheet" />
+	
+</head>
+<body>
+    
+
+    <div id="div_title">
+        <div id="div_operation">
+        <span>
+        <a class="address"> <span> 管理设置 </span> </a>
+        <span class="address">  > </span>
+        <a class="address"> <span> 基础设置  </span> </a>
+        <span class="address">  > </span>
+        <a class="address"> <span> 部门设置 </span> </a>
+    </span>
+    </br>
+            <button class="btn_operation" onclick="add()">增加</button>
+            <button class="btn_operation" onclick="deleteAll()">删除</button>
+        </div>
+        <div id="div_search">
+         </br>
+          </br>
+            <input class="search_input" id="input_user" style="position:relative;left:197px;top:0px;" />
+            <button class="btn_operation" id="btn_search" style="position:relative;left:197px;top:0px;">搜索</button>
+        </div>
+    </div>
+    
+	<!-- 删除对话框 -->
+	<div id="dialog-confirm-delete" title="删除这些部门吗？" style="display:none;">
+	  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这些部门将被永久删除，并且无法恢复。您确定吗？</p>
+	</div>
+ 
+    <!-- 修改与新增的对话框 -->
+    <div id="dialog-form" title="新建部门" style="display:none;">
+        <p class="validateTips">所有的表单字段都是必填的。</p>
+        <form>
+            <fieldset>
+                <input style="display:none" type="text" id="ID" class="text ui-widget-content ui-corner-all">
+                <label>部门名称</label>
+                <input type="text" id="departmentName" class="text ui-widget-content ui-corner-all">
+                <label>备注</label>
+                <input type="text" id="remark" class="text ui-widget-content ui-corner-all">
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- 数据表格 -->
+    <table id="departmentSettingData">
+        <tr>
+            <th>
+                <input type="checkbox" name="checkAll" id="checkAll" value="全选/全不选" />
+            </th>
+            <th><div class="div_long">序号</div></th>
+            <th><div class="div_long">部门名称</div></th>
+            <th><div class="div_longer">备注</div></th>
+            <th><div class="div_long">操作</div></th>
+        </tr>
+        
+        <tbody id = "tableBody">
+        </tbody>
+    </table>
+ <div class="paging" id = "paging">
+ </div>
+
+
+
+
+    <script src="../frame/jquery-3.1.1.js"></script>
+    <script src="../frame/jquery-3.1.1.min.js"></script>
+    <link href="../frame/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <script src="../frame/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="../js/departmentSetting.js"></script>
+</body>
+</html>

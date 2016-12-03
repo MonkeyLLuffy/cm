@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../css/dataTable.css" rel="stylesheet" />
+	<link href="../css/paging.css" rel="stylesheet" />
+	<style type="text/css">
+	.importDateSortDown
+	{
+	position: relative;
+    top: 35px;
+    left: -20px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+	}
+	#sortByDate{
+	position: relative;
+	top: 30px;
+	left: -150px;
+	width: 130px;
+	height: 28px;
+	background:#FFFFFF;
+	border:1px solid #797979;
+	border-radius: 4px;
+	cursor: pointer;
+}
+ #div_title {
+        padding-bottom:20px;
+        }
+</style>
+</head>
+<body>
+    
+	<!-- 删除对话框 -->
+	<div id="dialog-confirm-delete" title="删除这些合同吗？" style="display:none;">
+	  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这些合同数据将被永久删除，并且无法恢复。您确定吗？</p>
+	</div>
+    <div id="div_title">
+   
+        <div id="div_operation">
+         <span>
+			<a class="address"> <span> 管理设置</span> </a>  <span class="address">  > </span>
+			<a class="address"> <span>回收站</span> </a>
+    	</span>
+            <img src="../img/down.png" class="importDateSortDown">
+			<input type="button" id = "sortByDate" style="position:relative;top:40px;" value="按导入日期排序" onclick="importDateSort()">
+			
+        </div>
+        <div id="div_search">
+            <button class="btn_operation" id="restoreAll()" style="position:relative;left:156px;top:24px;">全部还原</button>
+            <button class="btn_operation" id="deleteAll() "style="position:relative;left:156px;top:24px;">彻底删除</button>
+        </div>
+    </div>
+	
+	
+	
+   
+   
+    <!-- 数据表格 -->
+    <table id="dg">
+        <tr>
+            <th>
+                <input type="checkbox" name="checkAll" id="checkAll" value="全选/全不选" />
+            </th>
+            <th><div class="div_short">序号</div></th>            
+            <th><div class="div_short">流程编号</div></th>
+            <th><div class="div_long">合同名称</div></th>
+            <th><div class="div_short">甲方</div></th>
+            <th><div class="div_short">乙方</div></th>
+            <th><div class="div_short">合同类型</div></th>
+            <th><div class="div_short">签订日期</div></th>
+            <th><div class="div_short">合同期限</div></th>
+            <th><div class="div_short">导入时间</div></th>
+            <th><div class="div_short">合同金额</div></th>
+            <th><div class="div_short">经办部门</div></th>
+            <th><div class="div_short">经办人</div></th>
+            <th><div class="div_short">备注</div></th>
+            <th><div class="div_short">操作</div></th>
+        </tr>
+        
+        <tbody id = "tableBody">
+        </tbody>
+    </table>
+<div>
+
+    <div class="paging" id = "paging">
+	</div>
+
+
+</div>
+    <script src="../frame/jquery-1.11.1.js"></script>
+    <script src="../js/recycleBin.js"></script>
+    
+
+</body>
+
+</html>

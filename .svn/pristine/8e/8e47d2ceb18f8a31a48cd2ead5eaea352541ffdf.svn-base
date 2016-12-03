@@ -1,0 +1,16 @@
+package cn.dlb.cm.dao.department;
+
+import org.springframework.stereotype.Repository;
+
+import cn.dlb.cm.base.dao.BaseDaoImpl;
+import cn.dlb.cm.entity.Department;
+
+@Repository
+public class DepartmentDaoImpl extends BaseDaoImpl<Department> implements DepartmentDao{
+
+	@Override
+	public String getDepartmentWithPaging(String condition, int rows, int page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

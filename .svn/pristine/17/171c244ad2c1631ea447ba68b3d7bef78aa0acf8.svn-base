@@ -1,0 +1,77 @@
+package cn.dlb.cm.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import cn.dlb.cm.entity.Role;
+import cn.dlb.cm.service.role.RoleService;
+
+@Controller
+@RequestMapping("/role")
+public class RoleController extends BaseController {
+
+	@Resource
+	RoleService service;
+	
+	@RequestMapping("update.action")
+	@ResponseBody
+	public int update(Role role){
+		return service.update(role);
+	}
+	
+	/**
+	 * 方法简述：角色列表
+	 * @param condition
+	 * @param rows
+	 * @param page
+	 * @return
+	 * 时间：2016-11-27
+	 * 作者：刘群
+	 */
+	@RequestMapping("getRoleWithPaging.action")
+	@ResponseBody
+	public String getRoleWithPaging(String condition,int rows,int page){
+		Map<String, Object> result = service.getRoleWithPaging(condition,rows,page);
+		String resultString = new Gson().toJson(result).toString();
+		System.out.println(resultString);
+		return resultString;
+	}
+	
+	/**
+	 * 方法简述：角色设置
+	 * @return
+	 * 时间：2016-11-28
+	 * 作者：刘群
+	 */
+	@RequestMapping("/roleSetting.action")
+	public String roleSetting(){
+		return "/roleSetting.html";
+	}
+	
+	
+	
+	@RequestMapping("add.action")
+	@ResponseBody
+	public int add(String roleName,String remark){
+		Role role = new Role();
+		role.setRoleName(roleName);
+		role.setRemark(remark);
+		return service.add(role);
+	}
+	
+	@RequestMapping("delete.action")
+	@ResponseBody
+	public int delete(Integer id){
+		return service.delete(id);
+	}
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 16:38:02 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.ContractFile" table="CONTRACTFILE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="fileName" type="java.lang.String">
+            <column name="FILENAME" length="100"/>
+        </property>
+        <property name="fileAddress" type="java.lang.String">
+            <column name="FILEADDRESS" />
+        </property>
+        <property name="uploadTime" type="java.util.Date">
+            <column name="UPLOADTIME" />
+        </property>
+         <property name="downloadTime" type="java.util.Date">
+            <column name="DOWNLOADTIME" />
+        </property>
+        <property name="remark" type="text" >
+            <column name="REMARK" length="2000"/>
+        </property>
+        <many-to-one name="uploader" class="cn.dlb.cm.entity.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <one-to-one name="contractRecord" class="cn.dlb.cm.entity.ContractRecord"></one-to-one>
+    </class>
+</hibernate-mapping>

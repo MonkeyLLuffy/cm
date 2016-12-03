@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>partCompanyDataAnalysis.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css" href = "../css/dataTable.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <div id="div_title">
+        <span>
+	        <a class="address"> <span> 管理设置 </span> </a>
+	        <span class="address">  > </span>
+	        <a class="address"> <span> 基础设置  </span> </a>
+	        <span class="address">  > </span>
+	        <a class="address"> <span> 部门设置 </span> </a>
+    	</span>
+    	<div>
+    	
+    	
+    	</div>
+    </div>
+    
+    
+    
+    
+    <script src="../frame/echarts.js"></script>
+    <script src="../js/partDataAnalysis.js"></script>
+  </body>
+</html>

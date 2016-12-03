@@ -1,0 +1,93 @@
+$(function(){
+	
+	var timeType = $("input[name='Sex']");
+	
+	timeType[0].onchange=function(){
+	if (this.checked) {
+			//获取年的数据
+	}
+	};
+	
+	timeType[1].onchange=function(){
+		if (this.checked) {
+			//获取月的数据
+		}
+	};
+	var x = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+	var y = [120, 132, 101, 134, 90, 230, 210,320,340,340,230,230];
+	
+	$.ajax({
+        type: "POST",
+        url: "/cm/con/deleteByIds.action",
+        data:
+            {
+                ids: IDS
+        },
+        async: true,
+        traditional: true,
+        success: function (result) {
+        	$( "#dialog-confirm-delete" ).dialog( "close" );
+	        	PageReload(page,rows);//删除成功并重新加载数据
+        	
+        }
+    });
+	lineMap(x,y);
+	
+});
+
+function onCompanyChange(value){//公司ID
+	alert(value);
+}
+function lineMap(x,y){
+	option = {
+		    title: {
+		        text: '每年/每月签订合同总数'
+		    },
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    color:["#3DCFFA"],
+		    toolbox: {
+		        feature: {
+		            saveAsImage: {}
+		        }
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis : [
+		        {
+		            type : 'category',
+		            boundaryGap : false,
+		            interval:0,
+		            data : x
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'年度合同签订份数',
+		            type:'line',
+		            stack: '总量',
+		            symbolSize:7,
+		            showAllSymbol:true,
+		            areaStyle: {normal: {}},
+		            data:y
+		        }
+		    ]
+		};
+
+
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('div_lineMap'));
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);	
+	
+}

@@ -1,0 +1,46 @@
+﻿$.ajax({
+    type: "POST",
+    url: "/cm/user/getRecycleBinData.action",
+    async: true,
+    success: function (result) {
+        if (result && result != "") {
+            var json = eval(result);
+            for (var i in json) {
+                var d = json[i];
+                var num = i;
+                var id = d.ID;
+                num = parseInt(num) + 1;
+                $('#dg').append('<tr><td>'+
+                    '<input type="checkbox" class="checkItems" />' +
+                    '</td><td>' + num +
+                    '</td><td>' + d.ID +
+                    '</td><td>' + d.CONTRACTNAME +
+                    '</td><td>' + d.PARTYA +
+                    '</td><td>' + d.PARTYB +
+                    '</td><td>' + d.CONTRACTTYPE +
+                    '</td><td>' + d.SIGNINGDATE +
+                    '</td><td>' + d.DEADLINE +
+                    '</td><td>' + d.IMPORTDATE +
+                    '</td><td>' + d.CONTRACTAMOUNT +
+                    '</td><td>' + d.DEPARTMENT +
+                    '</td><td>' + d.OPERATOR +
+                    '</td><td>' + d.REMARK +
+                    '</td><td>' +
+                    '<a href="javascript:restore('+id+')"><span>还原</span></a></br>' +
+                    '<a href="javascript:deleteCompletely(' + id + ')"><span>彻底删除</span></a>' +
+                    '</td></tr>');
+            }
+        }
+    },
+    error: function (data) {
+        alert("导入数据失败!");
+    }
+});
+
+function restore(id) {
+    alert(id);
+}
+
+function deleteCompletely(id) {
+    alert(id);
+}

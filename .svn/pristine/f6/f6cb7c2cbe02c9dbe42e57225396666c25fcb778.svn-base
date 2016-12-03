@@ -1,0 +1,26 @@
+package cn.dlb.cm.service.department;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.dlb.cm.dao.department.DepartmentDao;
+import cn.dlb.cm.entity.Department;
+
+@Service
+public class DepartmentServiceImpl implements DepartmentService{
+	@Autowired
+	private DepartmentDao dao;
+	@Override
+	public String addDepartment(Department department) {
+		// TODO Auto-generated method stub
+		dao.add(department);
+		return "1";
+	}
+	@Override
+	public String deleteByID(Integer id) {
+		// TODO Auto-generated method stub
+		dao.delete(id);
+		return "1";
+	}
+	
+}

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../css/dataTable.css" rel="stylesheet" />
+	<link href="../css/paging.css" rel="stylesheet" />
+	<style>
+	ul {
+  		list-style: none;
+  		margin: 0;
+  		padding: 0;5.
+	}
+	.L1{
+	position: relative;
+	left:20px;
+	}
+	.L2{
+	
+	position: relative;
+	left:35px;
+	
+	
+	}
+	
+	.L3{
+	
+	position: relative;
+	left:50px;
+	
+	
+	}
+	
+	
+</style>
+</head>
+<body>
+    
+    <div id="div_title">
+        <div id="div_operation">
+	        <span>
+		        <a class="address"> <span> 管理设置 </span> </a>
+		        <span class="address">  > </span>
+		        <a class="address"> <span> 基础设置  </span> </a>
+		        <span class="address">  > </span>
+		        <a class="address"> <span> 角色设置 </span> </a>
+		    </span>
+		    </br>
+            <button class="btn_operation" onclick="add()">增加</button>
+            <button class="btn_operation" onclick="deleteAll()">删除</button>
+        </div>
+        <div id="div_search">
+         </br>
+          </br>
+            <input class="search_input" id="input_role" style="position:relative;left:197px;top:0px;"  />
+            <button class="btn_operation" id="btn_search" style="position:relative;left:197px;top:0px;" onclick="search()">搜索</button>
+        </div>
+    </div>
+
+    <!-- 数据表格 -->
+    <table id="roleSettingData" >
+        <tr>
+            <th>
+                <input type="checkbox" name="checkAll" id="checkAll" value="全选/全不选" />
+            </th>
+            <th><div class="div_long">序号</div></th>
+            <th><div class="div_long">角色名称</div></th>
+            <th><div class="div_longer">角色说明</div></th>
+            <th><div class="div_longer">操作</div></th>
+        </tr>
+        
+        <tbody id = "tableBody">
+        </tbody>
+    </table>
+    <div class="paging" id = "paging">
+	</div>
+    <!-- 修改角色的对话框 -->
+    <div id="dialog-setPermission" title="修改这个角色吗" style="display:none;">
+    <form action="" id="addUpdate">
+        <label>角色名称</label>
+        <input type="text" id="name" class="text ui-widget-content ui-corner-all"  required="required" >
+        <label>角色说明</label>
+        <input type="text" id="name" class="text ui-widget-content ui-corner-all"  required="required" >
+        <ul class = "L1">
+            
+        </ul>
+        </form>
+    </div>
+    <!-- 删除对话框 -->
+	<div id="dialog-confirm-delete" title="删除这个角色吗？" style="display:none;">
+	  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这些角色将被永久删除，并且无法恢复。您确定吗？</p>
+	</div>
+ <!-- 修改与新增的对话框 -->
+    <div id="dialog-form" title="新增角色" style="display:none;">
+            <p class="validateTips">带有红色*的都是必填的。</p>
+        <form id="addUpdate">
+            <fieldset>
+                <label id="for_roleName">角色名</label><span style="color:red;">*</span>
+                <input type="text" id="roleName" name="roleName" class="text ui-widget-content ui-corner-all">
+                <label for="remark">角色说明</label>
+                <input type="text" id="remark" name="remark" class="text ui-widget-content ui-corner-all" >
+            </fieldset>
+        </form>
+    </div>
+   
+    <script src="../frame/jquery-3.1.1.js"></script>
+    <script src="../frame/jquery-3.1.1.min.js"></script>
+    <link href="../frame/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <script src="../frame/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="../js/roleSetting.js"></script>
+</body>
+</html>

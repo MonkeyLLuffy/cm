@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-13 23:34:57 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.Privilege" table="PRIVILEGE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="pName" type="java.lang.String" access="field">
+            <column name="PNAME" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" />
+        </property>
+        <set name="roles" table="ROLE_PRIVILEGE" inverse="false" lazy="true">
+            <key>
+                <column name="PID" />
+            </key>
+            <many-to-many class="cn.dlb.cm.entity.Role" column="RID"/>
+        </set>
+        <many-to-one name="topPrivilege" class="cn.dlb.cm.entity.Privilege" fetch="join">
+            <column name="TPID" />
+        </many-to-one>
+        <set name="childPrivilege" table="PRIVILEGE" inverse="false" lazy="true">
+            <key>
+                <column name="TPID" />
+            </key>
+            <one-to-many class="cn.dlb.cm.entity.Privilege" />
+        </set>
+    </class>
+</hibernate-mapping>

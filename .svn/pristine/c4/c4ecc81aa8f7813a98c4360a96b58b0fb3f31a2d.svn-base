@@ -1,0 +1,26 @@
+package cn.dlb.cm.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.service.recordHistory.RecordHistoryService;
+
+@Controller
+@RequestMapping("/history")
+public class RecordHistoryController {
+	
+	@Autowired
+	private RecordHistoryService historyService;
+	
+	
+	
+	@RequestMapping("")
+	public String downloadHistory(PageBean bean,Model model,String id,String downUser,String contractName,String userType){
+		PageBean newPageBean= historyService.getDownloadHistory(bean,id,downUser,contractName,userType);
+		
+		return null;
+	}
+}

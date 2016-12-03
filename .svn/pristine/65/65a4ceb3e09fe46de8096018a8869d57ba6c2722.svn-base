@@ -1,0 +1,8 @@
+package cn.dlb.cm.dao.department;
+
+import cn.dlb.cm.base.dao.BaseDao;
+import cn.dlb.cm.entity.Department;
+
+public interface DepartmentService extends BaseDao<Department>{
+
+}

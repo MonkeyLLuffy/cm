@@ -1,0 +1,114 @@
+package cn.dlb.cm.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.entity.Query_ContractRecord;
+import cn.dlb.cm.service.contractRecord.ContractRecordService;
+
+@Controller
+@RequestMapping("/contractRecord")
+public class ContractRecordController extends BaseController {
+
+	@Autowired
+	private ContractRecordService contractRecordService;
+
+	
+	/**
+	 * 方法简述：进入回收站页面
+	 * @return
+	 * 时间：2016-11-25
+	 * 作者：刘群
+	 */
+	@RequestMapping("/recycleBin.action")
+	public String recycleBin(){
+		return "/recycleBin.html";
+	}
+	
+	/**
+	 * 方法简述：回收站表格数据
+	 * @return json数据
+	 * 时间：2016-11-24
+	 * 作者：刘群
+	 */
+	@RequestMapping("getRecycleBinData.action")
+	@ResponseBody
+	public String getRecycleBinData(String condition,int rows,int page) {
+		Map<String, Object> result = contractRecordService.getRecycleBinData(condition,rows,page);
+		String resultString = new Gson().toJson(result).toString();
+		/*List<Map<String, String>> dataList = new ArrayList<Map<String,String>>();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("ID", "HT20160719107");
+		map.put("CONTRACTNAME", "成都龙泉宝湾国际物流与成都报网仓储服务合同");
+		map.put("PARTYA", "成都龙泉宝湾国际物流有限公司");
+		map.put("PARTYB", "成都报网供应链管理有限公司");
+		map.put("CONTRACTTYPE", "配送");
+		map.put("SIGNINGDATE", "2015/12/14");
+		map.put("DEADLINE", "2015/12/17");
+		map.put("IMPORTDATE", "2015/12/15");
+		map.put("CONTRACTAMOUNT", "日20万元");
+		map.put("DEPARTMENT", "成都报网");
+		map.put("OPERATOR", "吴晓飞");
+		map.put("REMARK", "计费面积2058.6平，有补充协议，面积变更");
+		map.put("CONTRACTFILEPATH", "http://localhost:8080/cm/……");
+		map.put("CONTRACTFILE", "文件名");
+		map.put("IMPORTUSER", "刘群");
+		
+		dataList.add(map);
+		dataList.add(map);
+		String resultString = new Gson().toJson(dataList).toString();*/
+		System.out.println(resultString);
+		return resultString;
+	}
+	
+	
+	/**
+	 * 
+	 * 方法描述:增加了高级搜索功能,实现分页效果
+	 * @param contractRecord
+	 * @param model
+	 * @param pageBean
+	 * @return 返回显示的界面
+	 * 时间:2016-11-28
+	 * 作者:路遥
+	 */
+	@RequestMapping("/advancedSearch.action")
+	public String advancedSearch(Query_ContractRecord contractRecord,
+			Model model, PageBean pageBean,String importDateSort,String signingDateSort,String deadlineSort) {
+
+		PageBean newPageBean = contractRecordService.findadvancedSearch(
+				 contractRecord,pageBean,importDateSort,signingDateSort,deadlineSort);
+		//返回分页结果和各种查询条件
+		model.addAttribute("pageBean", newPageBean);
+		model.addAttribute("contractRecord", contractRecord);
+		//&importDateSort=${importDateSort}&signingDateSort=${signingDateSort}&deadlineSort=${deadlineSort}
+		model.addAttribute("importDateSort",importDateSort);
+		model.addAttribute("signingDateSort",signingDateSort);
+		model.addAttribute("deadlineSort",deadlineSort);
+		return "/contractRecord/dataSummary.jsp";
+	}
+	
+	//删除数据记录
+	@RequestMapping("/deleteContractRecord.action")
+	public String deleteContractRecord(String id){
+		contractRecordService.deleteContractRecord(id);
+		return "redirect:/contractRecord/advancedSearch.action";
+	}
+	
+	@RequestMapping("/download.action")
+	public String getDownload(){
+		
+		return "";
+	}
+}

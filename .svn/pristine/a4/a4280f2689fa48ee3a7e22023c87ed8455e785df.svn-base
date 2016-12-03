@@ -1,0 +1,8 @@
+user=root
+password=3590286
+jdbcurl=jdbc:mysql:///cm
+driverclass=com.mysql.jdbc.Driver
+maxPoolSize=20
+minPoolSize=1
+initialPoolSize=2
+maxIdleTime=1200

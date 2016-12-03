@@ -1,0 +1,10 @@
+package cn.dlb.cm.dao.role;
+
+import org.springframework.stereotype.Repository;
+
+import cn.dlb.cm.base.dao.BaseDaoImpl;
+import cn.dlb.cm.entity.Role;
+@Repository
+public class RoleDaoImpl extends BaseDaoImpl<Role> implements RoleDao{
+
+}

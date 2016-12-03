@@ -1,0 +1,55 @@
+package cn.dlb.cm.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Department {
+	private Integer id;
+	private String dName;
+	private Set<User> users=new HashSet<>();
+	private String description;
+	private Department topDept;
+	private Set<Department> childDept=new HashSet<>();
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getdName() {
+		return dName;
+	}
+	public void setdName(String dName) {
+		this.dName = dName;
+	}
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Department getTopDept() {
+		return topDept;
+	}
+	public void setTopDept(Department topDept) {
+		this.topDept = topDept;
+	}
+	public Set<Department> getChildDept() {
+		return childDept;
+	}
+	public void setChildDept(Set<Department> childDept) {
+		this.childDept = childDept;
+	}
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", dName=" + dName + ", description=" + description + ", topDept=" + topDept
+				+ "]";
+	}
+	
+}

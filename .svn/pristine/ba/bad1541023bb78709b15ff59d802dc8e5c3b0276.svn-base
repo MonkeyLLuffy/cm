@@ -1,0 +1,52 @@
+package cn.dlb.cm.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.dlb.cm.entity.PageBean;
+import cn.dlb.cm.entity.Query_ContractRecord;
+import cn.dlb.cm.service.contractRecord.ContractRecordService;
+
+@Controller
+@RequestMapping("/contractRecord")
+public class ContractRecordController extends BaseController {
+
+	@Autowired
+	private ContractRecordService contractRecordService;
+
+	
+	
+	/**
+	 * 
+	 * 方法描述:增加了高级搜索功能,上面的方法已经作废
+	 * @param contractRecord
+	 * @param model
+	 * @param pageBean
+	 * @return 返回显示的界面
+	 * 时间:2016-11-28
+	 * 作者:路遥
+	 */
+	@RequestMapping("/advancedSearch.action")
+	public String advancedSearch(Query_ContractRecord contractRecord,
+			Model model, PageBean pageBean,String importDateSort,String signingDateSort,String deadlineSort) {
+
+		PageBean newPageBean = contractRecordService.findadvancedSearch(
+				 contractRecord,pageBean,importDateSort,signingDateSort,deadlineSort);
+
+		model.addAttribute("pageBean", newPageBean);
+		model.addAttribute("contractRecord", contractRecord);
+		//&importDateSort=${importDateSort}&signingDateSort=${signingDateSort}&deadlineSort=${deadlineSort}
+		model.addAttribute("importDateSort",importDateSort);
+		model.addAttribute("signingDateSort",signingDateSort);
+		model.addAttribute("deadlineSort",deadlineSort);
+		return "/contractRecord/dataSummary.jsp";
+	}
+	
+	@RequestMapping("/deleteContractRecord.action")
+	public String deleteContractRecord(String id){
+		contractRecordService.deleteContractRecord(id);
+		return "redirect:/contractRecord/advancedSearch.action";
+	}
+}

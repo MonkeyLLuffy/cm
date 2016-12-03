@@ -1,0 +1,141 @@
+
+
+.log{
+	float: left;
+	padding-left: 93px;
+	padding-right: 30px;
+}
+
+.hr{
+	margin-top: 77px;
+	margin-right: 110px;
+}
+
+.logimg{
+	width: 225px;
+	height: 100px;
+}
+
+.shuxian{
+	float: left;
+	padding:15px 25px 5px 0px;
+	margin: 5px;
+}
+
+.loginFont{
+	float: left;
+	text-align: center;
+	padding-top: 26px;
+	font-size: 36px;
+	
+}
+
+.mainImg{
+	position: absolute;
+	top:140px;
+	left:100px;
+	width: 585px;
+	height:430px;
+}
+
+
+.loginLocation{
+	width:500px;
+	height:429px;
+	position: absolute;
+	top:141px;
+	left:750px;
+	background: #F5F9FC;
+}
+
+.loginHeader{
+	background: #29B7E7;
+	height: 100px;
+}
+
+.topfont{
+	position: relative;
+	top:38px;
+	left:195px;
+	color:#D4F9FF;
+	
+}
+
+.man{
+	position: relative;
+	top:61px;
+	left:68px;
+}
+
+
+
+.username{
+	position: relative;
+	top:60px;
+	left:68px;
+	height: 38px;
+	width: 280px;
+}
+
+.lock{
+	position: absolute;
+	top:252px;
+	left:68px;
+}
+
+
+.password{
+	position: relative;
+	top:96px;
+	left:92px;
+	height: 38px;
+	width: 280px;
+}
+
+.jizhuPass{
+	position: relative;
+	top:115px;
+	left:92px;
+}
+
+.checkBox{
+	
+}
+
+.bottom{
+	position: relative;
+	top:130px;
+	left:95px;
+}
+
+.sub{
+	background: url(../img/login.png) center no-repeat;
+	width: 278px;
+	height:40px;
+	cursor: pointer;
+} 
+
+.last{
+	position: relative;
+	top:437px;
+	left:0px;
+	height: 18px;
+	width: 2000px;
+	background: #F5F6F5;
+}
+
+.tel{
+	padding-left: 859px;
+	color:#777777;
+	text-decoration: none;
+	font-family: "Microsoft YaHei",微软雅黑;
+	font-size: 12px;
+	text-align: center;
+}
+
+
+
+
+
+
+

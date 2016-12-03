@@ -1,0 +1,47 @@
+package cn.dlb.cm.service.user;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.dlb.cm.dao.user.UserDao;
+import cn.dlb.cm.entity.User;
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private UserDao userDao;
+
+	@Override
+	public User check(User user) {
+		return userDao.check(user);
+	}
+
+	@Override
+	public Map<String, Object> getUserWithPaging(String condition, int rows, int page) {
+		// TODO Auto-generated method stub
+		return userDao.getUserWithPaging(condition, rows, page);
+	}
+
+
+	@Override
+	public int update(User user) {
+		// TODO Auto-generated method stub
+		userDao.update(user);
+		return 1;
+	}
+
+	@Override
+	public int add(User user) {
+		// TODO Auto-generated method stub
+		userDao.add(user);
+		return 1;
+	}
+	@Override
+	public int delete(Integer id) {
+		userDao.delete(id);
+		return 1;
+	}
+}

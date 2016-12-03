@@ -1,0 +1,81 @@
+package cn.dlb.cm.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import cn.dlb.cm.entity.Department;
+import cn.dlb.cm.service.department.DepartmentService;
+
+@Controller
+@RequestMapping("/department")
+public class DepartmentController extends BaseController{
+	@Resource
+	DepartmentService service;
+	/**
+	 * 方法简述：部门设置
+	 * @return
+	 * 时间：2016-11-28
+	 * 作者：刘群
+	 */
+	@RequestMapping("/departmentSetting.action")
+	public String departmentSetting(){
+		return "/departmentSetting.html";
+	}
+
+	/**
+	 * 方法简述：新增一个部门
+	 * @param departmentName
+	 * @return
+	 * 时间：2016-11-28
+	 * 作者：刘群
+	 */
+	@RequestMapping("/addDepartment.action")
+	@ResponseBody
+	public String addDepartment(Department department) {
+		return service.addDepartment(department);
+	}
+	
+	
+	@RequestMapping("/delete.action")
+	@ResponseBody
+	public String delete(Integer id) {
+		return service.delete(id)+"";
+	}
+	/**
+	 * 方法简述：部门列表
+	 * @param condition
+	 * @param rows
+	 * @param page
+	 * @return
+	 * 时间：2016-11-27
+	 * 作者：刘群
+	 */
+	@RequestMapping("getDepartmentWithPaging.action")
+	@ResponseBody
+	public String getDepartmentWithPaging(String condition,int rows,int page){
+		System.out.println(rows);Map<String, Object> result = new HashMap<String, Object>();
+		List<Map<String, Object>> dataList = new ArrayList<Map<String,Object>>();
+		Map<String, Object> departmentData = new HashMap<>();
+		departmentData.put("ID", "21564538494");
+		departmentData.put("DEPARTMENTNAME", "财务部");
+		departmentData.put("REMARK", "这是备注");
+		dataList.add(departmentData);
+		dataList.add(departmentData);
+		String resultString = new Gson().toJson(dataList).toString();
+		System.out.println(resultString);
+		return resultString;
+	}
+	
+	
+	
+}

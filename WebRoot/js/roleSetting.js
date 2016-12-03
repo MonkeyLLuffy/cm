@@ -1,0 +1,516 @@
+﻿var tableData;
+var page = 1;
+var rows = 3;
+var name;
+$(function(){
+	name="";
+	loadTable("");
+});
+function loadTable(){
+	$.ajax({
+    type: "POST",
+    url: "/cm/role/getRoleWithPaging.action",
+    async: true,
+    data:
+    {
+        page: page,
+        rows: rows,
+        condition:name
+    },
+    success: function (result) {
+        if (result && result != "") {
+
+            var json = eval('('+result+')');
+            tableData = json.data;
+            for (var i in tableData) {
+                var d = tableData[i];
+                var num = i;
+                num = parseInt(num) + 1;
+                $('#tableBody').append('<tr><td>' +
+                    '<input type="checkbox" name="checkItems" />' +
+                    '</td><td>' + num +
+                    '</td><td>' + d.roleName +
+                    '</td><td>' + d.remark +
+                    '</td><td>' +
+                    '<a href="javascript:setPermission(' + d.id + ')"><span> 权限 </span></a>' +
+                    '<a href="javascript:update(' + i + ')"><span> 修改 </span></a>' +
+                    '<a href="javascript:deleteById(' + d.ID + ')"><span> 删除 </span></a>' +
+                    '</td></tr>');
+            }
+            //分页
+            var total = json.total;
+            var totalPage = json.totalPage;
+            paging(total,totalPage);
+        }
+    }
+});
+}
+function search(){
+	name = $("#input_role").val();
+	PageReload(page,rows);//删除成功并重新加载数据
+}
+function update(i) {
+	var itemData = tableData[i];
+	$("#roleName").val(itemData.roleName);
+	$("#remark").val(itemData.remark);
+	var dialog = $("#dialog-form").dialog({
+	    autoOpen: false,
+	    height: 280,
+	    width: 300,
+	    modal: true,
+	    title:"修改这个角色吗",
+	    buttons: {
+	        "修改": function () {
+	        	var ROLENAME = $("#departmentName").val();
+	        	var REMARK = $("#remark").val();
+	        	
+	        	if (ROLENAME.length == 0) {
+	        		$("#for_roleName")
+					.append( "<font color='red'>(角色名必填)</font>" );
+	        		return;
+				}else{
+					$("#for_roleName").empty();
+					$("#for_roleName")
+					.append("角色名");
+				}
+	        	
+	        	$.ajax({
+	        	    type: "POST",
+	        	    url: "/cm/role/update.action",
+	        	    data:
+	        	        {
+	        	            id: id,
+	        	            roleName: ROLENAME,
+		        	        remark: REMARK
+	        	        },
+	        	    async: true,
+	        	    success: function (result) {
+	        	        if (result && result != "") {
+	        	        	$("#dialog-form").dialog("close");
+	        	        }
+	        	    }
+	        	});
+	            $(this).dialog("close");
+
+	        },
+	        "取消": function () {
+	            $(this).dialog("close");
+	        }
+	    },
+	    close: function () {
+	        $(this).dialog("close");
+	    }
+	});
+	dialog.dialog("open");
+    
+}
+$('#checkAll').change(function(){
+	if($('#checkAll').prop("checked")){
+		//全选
+		 $("[name = checkItems]:checkbox").attr("checked", true);
+	}else{
+		//全不选
+		 $("[name = checkItems]:checkbox").attr("checked", false);
+		
+	}
+	
+});
+
+function add() {
+	$("#roleName").val("");
+	$("#remark").val("");
+	var dialog = $("#dialog-form").dialog({
+	    autoOpen: false,
+	    height: 300,
+	    width: 300,	    
+	    modal: true,
+	    title:"新增角色",
+	    buttons: {
+	        "新增": function () {
+	        	var ROLENAME = $("#roleName").val();
+	        	var REMARK = $("#remark").val();
+	        	if (ROLENAME.length == 0) {
+	        		$("#for_roleName")
+					.append( "<font color='red'>(角色名必填)</font>" );
+	        		return;
+				}else{
+					$("#for_roleName").empty();
+					$("#for_roleName")
+					.append("角色名");
+				}
+	        	$.ajax({
+	        	    type: "POST",
+	        	    url: "/cm/role/add.action",
+	        	    async: true,
+	        	    data:
+	        	    {
+	        	    	roleName: ROLENAME,
+	        	        remark: REMARK
+	        	    },
+	        	    success: function (result) {
+	        	        if (result && result != "") {
+	        	        	
+	        	        }
+	        	    }
+	        	   });
+	           $(this).dialog("close");
+	           PageReload(page,rows);
+
+	        },
+	        "取消": function () {
+	            $(this).dialog("close");
+	        }
+	    },
+	    close: function () {
+	    }
+	});
+	$("#dialog-form").dialog("open");
+}
+function setPermission(roleId){
+	//查找所有权限，以一级{二级{3级}}来保存
+	//全部
+	$.ajax({
+	    type: "POST",
+	    url: "/cm/permission/getPermission.action",
+	    async: true,
+	    success: function (result) {
+	        if (result && result != "") {
+	        	var html = '';
+	            var json = eval('('+result+')');
+	            for(var i in json){
+	            	var a = json[i];
+	            	var b = a.data;//permission实体
+	            	html += '<li>'+b.permissionName+'</li>';
+	            	var c = a.list;//子权限列表
+	            	if (c != null) {
+	            		html += '<ul class = "L2">';
+	            		for(var j in c){
+    	            		var d = c[j].data;//permission
+        	            	html += '<li><input type="checkbox" name = "permissionIdCheck" id="'+d.id+'" class="'+b.id+'" />'+ d.permissionName +'</li>';
+    	            		var e = c[j].list;//三级列表
+    	            		if (e != null) {
+    	            			html += '<ul class = "L3">';
+    	            			for(var k in e){
+    	            				var f = e[k];
+    	            				html += '<li><input type="checkbox" name = "permissionIdCheck" id="'+f.id+'" class="'+e.id+'" />'+ f.permissionName +'</li>';
+    	            			}	
+    	            			html += '</ul>';
+							}
+    	            	}
+            			html += '</ul>';
+					}
+	            	
+	            }
+    	    $(".L1").append(html);
+    	    //将对应已存在的权限勾选上
+    	    
+    	    $.ajax({
+                type: "POST",
+                url: "/cm/permission/getRolePermission.action",
+                data:
+                    {
+                	roleId: roleId
+                },
+                async: true,
+                traditional: true,
+                success: function (result) {
+                	var json = eval('('+result+')');
+    	            //对已有的设置为勾选
+    	            for (var i in json) {
+    	                var d = json[i];
+    	            	$("#"+d.id).prop("checked", true);
+    	            }
+                	
+                }
+            });
+    	    
+	        }
+	    }
+	   });
+	//遍历所有权限，将对应勾选勾选上
+	$("#dialog-setPermission").dialog({
+	    autoOpen: false,
+	    height: 600,
+	    width: 500,
+	    modal: true,
+	    buttons: {
+	        "确定": function () {
+	        	//设置
+	        	var permissionIds = new Array();
+	        	var n = 0;
+	        	for (var i in tableData) { 
+	        		if($('[name=permissionIdCheck]')[i].checked==true){
+	        			var d = $('[name=permissionIdCheck]')[i];
+	        			permissionIds[n++] = d.id;
+	        		}
+	        	}
+	        	$.ajax({
+	                type: "POST",
+	                url: "/cm/role/setPermission.action",
+	                data:
+	                    {
+	                	permissionIds: permissionIds,
+	                	roleId:roleId
+	                },
+	                async: true,
+	                traditional: true,
+	                success: function (result) {
+	    	            $("#dialog-setPermission").dialog("close");
+	                }
+	        	});
+	        },
+	        "取消": function () {
+	            $("#dialog-setPermission").dialog("close");
+	        }
+	    }
+	});
+
+	$("#dialog-setPermission").dialog("open");	
+}
+/*
+ * 批量删除部门
+ * */
+function deleteAll(){
+	
+	var dialog = $( "#dialog-confirm-delete" ).dialog({
+	      resizable: false,
+	      height:180,
+	      modal: true,
+	      buttons: {
+	        "确定删除": function() {
+	        	var IDS = new Array();
+	        	var n = 0;
+	        	for (var i in tableData) {
+	        		if($('[name=checkItems]')[i].checked==true){
+	        			var d = tableData[i];
+	        			IDS[n++] = d.id;
+	        		}
+	        	}
+	        	$.ajax({
+	                type: "POST",
+	                url: "/cm/role/deleteByIds.action",
+	                data:
+	                    {
+	                        ids: IDS
+	                },
+	                async: true,
+	                traditional: true,
+	                success: function (result) {
+	                	$( "#dialog-confirm-delete" ).dialog( "close" );
+	        	        	PageReload(page,rows);//删除成功并重新加载数据
+	                	
+	                }
+	            });
+	        },
+	        "取消": function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	dialog.dialog("open");
+}
+/*
+ * 删除部门
+ * */
+function deleteById(id){//confirm：你确定要删除吗？
+	var dialog = $( "#dialog-confirm-delete" ).dialog({
+	      resizable: false,
+	      height:180,
+	      modal: true,
+	      title:"删除这个角色吗",
+	      buttons: {
+	        "确定删除": function() {
+	        	$.ajax({
+	        	    type: "POST",
+	        	    url: "/cm/role/delete.action",
+	        	    data:
+	        	        {
+	        	            id: id
+	        	        },
+	        	    async: true,
+	        	    success: function (result) {
+	                	$( "#dialog-confirm-delete" ).dialog( "close" );
+		                	PageReload(page,rows);//删除成功并重新加载数据
+	        	    }
+	        	});
+	        },
+	        "取消": function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	dialog.dialog("open");
+}
+
+
+
+// 刷新页面
+function PageReload(newPage,newRows ) {	
+
+	//清空table内容
+	$('#tableBody').empty();
+    page = newPage;
+    rows = newRows;
+    loadTable(name);
+    $("#input_role").val(name)
+
+}
+//分页
+function paging(total,totalPage){
+	//清空之前的分页
+	$('#paging').empty();
+	
+   page = parseInt(page);
+   total = parseInt(total);
+   totalPage = parseInt(totalPage);
+   rows = parseInt(rows);
+   
+   var html = "";
+   if( totalPage == 0 ){
+   	html+='<font class="page_all">对不起,暂时没有数据</font>';
+   }else if( totalPage == 1 ){
+   	html += '<font class="page_all">1</font><div class="page_all">共1页</div>';
+   }else{ 
+   	if( totalPage<=5 && totalPage>1 ){
+   	if(page != 1){
+   		html += '<div class="page_bottomOrNext page_all">'+
+   			'<a class="page_link pageButton" href="javascript:PageReload('+(page-1)+','+rows+')">&lt;&lt;上一页</a></div>';
+   	}
+   	if(page == 1){
+   		html += '<div class="page_bottomOrNext page_all none" style="border: none;"></div>';
+   		html += '<div class="page_link_div page_all left" style="">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">1</a></div>';
+   	}else{
+   		html += '<div class="page_link_div page_all left">'+
+   		'<a class="page_link page_all" href="javascript:PageReload(1,'+rows+')">1</a></div>';
+   	}
+   	
+   	if(totalPage>=2&&page == 2){
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">2</a></div>';
+   	}else {
+   		if (totalPage >= 2){
+   			html += '<div class="page_link_div page_all left">'
+   				+'<a class="page_link page_all" href="javascript:PageReload(2,'+rows+')">2</a></div>';
+   		}
+   	}
+   	if(totalPage >= 3&&page == 3){
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">3</a></div>';
+   	}else{
+   		if (totalPage >= 3) {
+       		html += '<div class="page_link_div page_all left">'+
+       		'<a class="page_link page_all" href="javascript:PageReload(3,'+rows+')">3</a></div>';
+			}
+   	}            	
+   	if(totalPage>=4&&page == 4){
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">4</a></div>';
+   	}else{
+   		if (totalPage>=4) {
+       		html += '<div class="page_link_div page_all left">'+
+       		'<a class="page_link page_all" href="javascript:PageReload(4,'+rows+')">4</a></div>';
+			}
+   	}
+   	
+   	if(totalPage>=2&&page == 5){
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">5</a></div>';
+   	}else{
+   		
+   		if (totalPage>=5) {
+       		html += '<div class="page_link_div page_all left">'+
+       		'<a class="page_link page_all" href="javascript:PageReload(5,'+rows+')">5</a></div>';
+			}
+   	}           	
+   	
+   	if (totalPage != page) {
+			html += '<div class="page_bottomOrNext page_all">'+
+			'<a class="page_link pageNext" href="javascript:PageReload('+(page+1)+','+rows+')">下一页&gt;&gt;</a></div></c:if>';
+		}
+   	if(totalPage == page){
+   		html += '<div class="page_all" style="border: none;width: 10px;height: 23px;"></div></c:if>';
+   	}
+   	            	
+   }
+   else if (totalPage < page+4) {
+   	
+   	html += '<div class="page_bottomOrNext page_all">'+
+   	'<a class="page_link pageNext" href="javascript:PageReload('+(page-1)+','+rows+')">&lt;&lt;上一页</a>'+
+   	' </div><div class="page_link_div page_all left">'+
+   	'<a class="page_link page_all" href="javascript:PageReload(1,'+rows+')">1</a></div><font class="page_all dian">...</font>';
+   	
+   	if (page == totalPage-3){
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">'+(totalPage-3)+'</a></div>';
+   	}else{
+   		
+   		html += '<div class="page_link_div page_all left">'+
+   		'<a class="page_link page_all" href="javascript:PageReload('+(totalPage-3)+','+rows+')">'+(totalPage-3)+'</a></div>';
+   	}
+   	
+   	if (page == totalPage-2){
+   		
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">'+(totalPage-2)+'</a></div>';
+   	}else{
+   		
+   		html += '<div class="page_link_div page_all left">'+
+   		'<a class="page_link page_all" href="javascript:PageReload('+(totalPage-2)+','+rows+')">'+(totalPage-2)+'</a></div>';
+   	}
+   	
+   	if (page == totalPage-1){
+   		
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">'+(totalPage-1)+'</a></div>';
+   	}else{
+   		
+   		html += '<div class="page_link_div page_all left">'+
+   		'<a class="page_link page_all" href="javascript:PageReload('+(totalPage-3)+','+rows+')">'+(totalPage-1)+'</a></div>';
+   	}
+   	
+   	if (page == totalPage){
+   		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+   		'<a class="page_link"  style="color:gray;cursor: default;">'+(totalPage)+'</a></div>';
+   	}else{
+   		
+   		html += '<div class="page_link_div page_all left">'+
+   		'<a class="page_link page_all" href="javascript:PageReload('+(totalPage)+','+rows+')">'+(totalPage)+'</a></div>';
+   	}
+   	
+   	html += '<div class="page_bottomOrNext page_all">'+
+   	'<a class="page_link pageNext" href="javascript:PageReload('+(page+1)+','+rows+')">下一页&gt;&gt;</a></div>'+
+   	'<div class="page_all" style="border: none;width: 10px;height: 23px;"></div>';
+	}
+   else {
+		if (page != 1) {
+			html += '<div class="page_bottomOrNext page_all">'+
+			'<a class="page_link pageButton" href="javascript:PageReload('+(page-1)+','+rows+')">&lt;&lt;上一页</a></div>';
+		}
+		if (page == 1) {
+			html += '<div class="page_bottomOrNext page_all none" style="border: none;"></div>';
+		}
+		html += '<div class="page_link_div page_all left" style="background: #EFEFEF;cursor: auto;">'+
+		'<a class="page_link"  style="color:gray;cursor: default;">'+page+'</a></div>'+
+		'<div class="page_link_div page_all"><a class="page_link" href="javascript:PageReload('+(page+1)+','+rows+')">'+(page+1)+'</a></div>'+
+		'<div class="page_link_div page_all"><a class="page_link" href="javascript:PageReload('+(page+2)+','+rows+')">'+(page+2)+'</a></div>'+
+		'<div class="page_link_div page_all"><a class="page_link" href="javascript:PageReload('+(page+3)+','+rows+')">'+(page+3)+'</a></div>'+
+		'<font class="page_all dian">...</font>'+
+		'<div class="page_link_div page_all left"><a class="page_link" href="javascript:PageReload('+(totalPage)+','+rows+')">'+totalPage+'</a></div>'+
+		'<div class="page_bottomOrNext page_all"><a class="page_link pageNext" href="javascript:PageReload('+(page+1)+','+rows+')">下一页&gt;&gt;</a></div>';
+		
+	}
+   var formHtml = '<form method="post">'+
+	'<div class="page_all">'+
+	'共'+totalPage+'页,到第<input type="text" id="currentPage" class="page_textBox">页'+
+	'</div>'+
+	'<input onclick = "jump()" class="page_sub page_all" value="确定">'+
+	'</form>';
+	html += formHtml;
+   }
+   $('#paging').append(html);
+}
+function jump(){
+	var value = $("#currentPage").val();
+	PageReload(value,rows);
+}

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>管理设置</title>
+    <link href="../css/manageSetting.css" rel="stylesheet" />
+    <link href="../css/leftMenu.css" rel="stylesheet" />
+    <script src="../js/manageSetting.js"></script>
+</head>
+<body>
+    <div id="div_left">
+        <ul id="menu">
+            <!--基础设置菜单 -->
+            <li class="L1">
+                <a href="javascript:openSubMenu('baseSetting');" id="baseSetting">
+                    <span>
+                        <img src="../img/turnRight.png" align="middle" id="baseSettingImg" />
+                        基础设置
+                    </span>
+                </a>
+            </li>
+            <ul id="baseSettingMenu" class="U1">
+                <li class="L2">
+                    <a href="javascript:openPage('/cm/user/userSetting.action');" id="userSetting">
+                        <span>
+                            用户设置
+                        </span>
+                    </a>
+                </li>
+                <li class="L2">
+                    <a href="javascript:openPage('/cm/department/departmentSetting.action');" id="departmentSetting">
+                        <span>
+                            部门设置
+                        </span>
+                    </a>
+                </li>
+
+                <li class="L2">
+                    <a href="javascript:openPage('/cm/role/roleSetting.action');" id="roleSetting">
+                        <span>
+                            角色设置
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <!-- 用户设置结束 -->
+            <!--回收站菜单 -->
+            <li class="L1" id="recycleBin">
+                <a href="javascript:openPage('/cm/user/recycleBin.action');" id="m01">
+                    <span>
+                        回收站
+                    </span>
+                </a>
+            </li>
+            <!-- 回收站菜单结束 -->
+        </ul>
+        <!-- 左边菜单栏结束 -->
+    </div>
+   <div id="div_right">
+       <iframe id="rightSource" src="/cm/user/userSetting.action"/>
+   </div>
+</body>
+
+
+</html>

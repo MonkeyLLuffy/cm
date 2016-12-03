@@ -1,0 +1,112 @@
+/* login.jsp */
+/* -moz-box-shadow: 10px 10px 5px #888888; 老的 Firefox
+	box-shadow: 10px 10px 5px #888888; */
+.log {
+	float: left;
+	padding-left: 93px;
+	padding-right: 30px;
+	padding-top: 17px;
+}
+
+.hr {
+	margin-top: 77px;
+	width: 786px;
+	margin-left: 456px;
+	
+}
+
+.logimg {
+	width: 300px;
+	height: 75px;
+}
+
+.shuxian {
+	position: absolute;
+	top: 21px;
+	left: 441px;
+	
+}
+
+.loginFont {
+	position: absolute;
+	top: 46px;
+	left: 473px;
+	text-align: center;
+	font-size: 42px;
+	display: block;
+	width: 260px;
+	height: 100px;
+}
+
+.mainImg {
+	position: absolute;
+	top: 140px;
+	left: 100px;
+	width: 625px;
+	height: 430px;
+}
+
+.loginLocation {
+	width: 400px;
+	height: 370px;
+	position: absolute;
+	top: 175px;
+	left: 810px;
+	background: #F5F9FC;
+	border-radius: 4px;
+	border:solid 1px #888888;
+	-moz-box-shadow: 1px 1px 1px #888888; /* 老的 Firefox */
+	box-shadow: 1px 1px 1px #888888;
+}
+.login_shuxian{
+	position: absolute;
+	top:250px;
+	left:855px;
+	border-top: solid 1px #EEEEEE;
+	height: 1px;
+	width: 310px;
+	box-shadow:inset 0 0 5px 5px #ccc;
+	z-index: 8000;
+}
+
+
+/* main.jsp */
+.mainSearch {
+	position: absolute;
+	top: 30px;
+	left: 900px;
+}
+
+.mainHeader {
+	position: absolute;
+	top: 130px;
+	left: 100px;
+}
+
+.mainTable {
+	background: #29B7E7;
+	border: solid 1px #D4F9FF;
+	width: 1150px;
+	height: 38px;
+}
+
+.mainTableTh {
+	border: solid 1px #D4F9FF;
+	border-bottom: none;
+	border-top: none;
+	width: 200px;
+}
+
+.mainTableA {
+	text-decoration: none;
+	color: #D4F9FF;
+}
+
+.mainFont {
+	color: #1F228E;
+}
+
+.mainA {
+	text-decoration: none;
+	color: #1F228E;
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 16:38:02 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.ContractRecord" table="CONTRACTRECORD">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="contractName" type="java.lang.String">
+            <column name="CONTRACTNAME" />
+        </property>
+        <property name="partyA" type="java.lang.String">
+            <column name="PARTYA" />
+        </property>
+        <property name="partyB" type="java.lang.String">
+            <column name="PARTYB" />
+        </property>
+        <property name="contractType" type="java.lang.String">
+            <column name="CONTRACTTYPE" />
+        </property>
+        <property name="signingDate" type="java.sql.Date">
+            <column name="SIGNINGDATE" />
+        </property>
+        <property name="deadline" type="java.sql.Date">
+            <column name="DEADLINE" />
+        </property>
+        <property name="importDate" type="java.sql.Date">
+            <column name="IMPORTDATE" />
+        </property>
+        <property name="contractAmount" type="java.lang.Double">
+            <column name="CONTRACTAMOUNT" />
+        </property>
+        <property name="depart" type="java.lang.String">
+            <column name="DEPART" />
+        </property>
+        <property name="operator" type="java.lang.String">
+            <column name="OPERATOR" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+        <many-to-one name="contractFile" class="cn.dlb.cm.entity.ContractFile" unique="true" column="CONTRACTFILE"></many-to-one>
+        <many-to-one name="importUser" class="cn.dlb.cm.entity.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <property name="state" type="int">
+            <column name="STATE" />
+        </property>
+    </class>
+</hibernate-mapping>

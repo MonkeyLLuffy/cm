@@ -1,0 +1,14 @@
+package cn.dlb.cm.service.role;
+
+import java.util.Map;
+
+import cn.dlb.cm.entity.Role;
+
+public interface RoleService {
+
+	public int delete(Integer id);
+	public int update(Role role);
+	public int add(Role role);
+	public Map<String, Object> getRoleWithPaging(String condition, int rows,
+			int page);
+}

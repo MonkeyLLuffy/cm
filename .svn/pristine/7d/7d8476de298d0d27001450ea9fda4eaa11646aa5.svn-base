@@ -1,0 +1,60 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<title>首页</title>
+
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="../easyui/themes/default/easyui.css">
+<link type="text/css" rel="stylesheet" href="../css/index.css">
+</head>
+
+<body style="overflow:-Scroll;overflow-y:hidden" marginbottom="0" marginheight="0">
+	<div class="topbac">
+		<div class="log">
+			<img src="../img/logo.jpg" class="logimg">
+		</div>
+		<div class="shuxian"
+			style="height: 75px; width: 1px; border-left: 1px #ccc solid"></div>
+		<div class="loginFont">
+			<font color="#29B7E7">合同管理系统</font>
+		</div>
+	</div>
+
+	<div class="main_serach_location">
+		<div class="main_serach_fontLocation">
+			<font class="main_font">你好,${username}</font><a class="main_tuichu" href='<c:url value="/user/exit.action"></c:url>' target="_top" onclick="confirm('确定要退出么')">退出</a>
+			</div>
+		
+	</div>
+
+
+	<div class="mainHeader" style="margin: 0px; padding: 0px">
+		<table class="mainTable">
+			<tr style="margin: 0;padding: 0px;">
+				<th class="mainTableTh"><a href='<c:url value="/user/advancedSearch.action"></c:url>' class="mainTableA" target="body">首页</a></th>
+				<th class="mainTableTh"><a href='<c:url value="/contractRecord/advancedSearch.action"></c:url>' class="mainTableA" target="body">数据汇总表</a></th>
+				<th class="mainTableTh"><a href='<c:url value="/user/recordHistory.action"></c:url>' class="mainTableA" target="body">个人中心</a></th>
+				<th class="mainTableTh"><a href='<c:url value="/user/systemManage.action"></c:url>' class="mainTableA" target="body">管理设置</a></th>
+				<th class="mainTableTh none" style="border-right: none;border-left:none; width: 600px;"><a href="#"></a></th>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+</html>

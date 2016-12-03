@@ -1,0 +1,52 @@
+﻿$.ajax({
+    type: "POST",
+    url: "/cm/contractRecord/getRecycleBinData.action",
+    async: true,
+    data:
+    {
+        page: 1,
+        rows: 3
+    },
+    success: function (result) {
+        if (result && result != "") {
+            var json = eval('('+result+')');
+            var data = json.data;
+            for (var i in data) {
+                var d = data[i];
+                var num = i;
+                var id = d.ID;
+                num = parseInt(num) + 1;
+                $('#dg').append('<tr><td>'+
+                    '<input type="checkbox" class="checkItems" />' +
+                    '</td><td>' + num +
+                    '</td><td>' + d.id +
+                    '</td><td>' + d.contractName +
+                    '</td><td>' + d.partyA +
+                    '</td><td>' + d.partyB +
+                    '</td><td>' + d.contractType +
+                    '</td><td>' + d.signingDate +
+                    '</td><td>' + d.deadline +
+                    '</td><td>' + d.importDate +
+                    '</td><td>' + d.contractAmount +
+                    '</td><td>' + d.depart +
+                    '</td><td>' + d.operator +
+                    '</td><td>' + d.remark +
+                    '</td><td>' +
+                    '<a href="javascript:restore('+id+')"><span>还原</span></a></br>' +
+                    '<a href="javascript:deleteCompletely(' + id + ')"><span>彻底删除</span></a>' +
+                    '</td></tr>');
+            }
+        }
+    },
+    error: function (data) {
+        alert("导入数据失败!");
+    }
+});
+
+function restore(id) {
+    alert(id);
+}
+
+function deleteCompletely(id) {
+    alert(id);
+}

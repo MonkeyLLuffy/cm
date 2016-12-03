@@ -1,0 +1,75 @@
+package InsertContractRecord;
+
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import cn.dlb.cm.controller.UserController;
+import cn.dlb.cm.entity.ContractRecord;
+import cn.dlb.cm.entity.PageBean;
+
+public class Test {
+	/**
+	 * private String id;
+	private String contractNum;
+	private String contractName;
+	private String partyA;
+	private String partyB;
+	private String contractType;
+	private Date signingDate;
+	private Date deadline;
+	private Date importDate;
+	private Date exportDate;
+	private Date updateDate;
+	private String contractAmount;
+	private String depart;
+	private String operator;
+	private String remark;
+	private ContractFile contractFile;
+	private User importUser;
+	private int state;
+	 * 方法描述:
+	 * 时间:2016-11-25
+	 * 作者:路遥
+	 */
+	@org.junit.Test
+	public void InsertContractRecord(){
+		ApplicationContext app = new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
+		SessionFactory factory = (SessionFactory) app.getBean("factoryBean");
+		Session session = factory.openSession();
+		
+		for(int i=10000;i<10020;i++){
+			ContractRecord con=new ContractRecord();
+			con.setId("WX-"+i);
+			con.setContractNum("LY-"+i);
+			con.setContractName("DLB-"+i);
+			con.setPartyA("hj"+i+"dsk");
+			con.setPartyB("hj"+i+"dsk");
+			con.setContractType(i+"哈哈"+"j");
+			con.setSigningDate(new Date());
+			con.setDeadline(new Date());
+			con.setImportDate(new Date());
+			
+			con.setContractAmount(i+"2"+i);
+			con.setDepart("ds"+i+"积极");
+			con.setOperator("路遥"+i);
+			con.setRemark("hjskhkhjkdshakj黄金客户即可"+i+"觉得卡萨");
+			con.setState(1);
+			Transaction transaction=session.beginTransaction();
+			session.save(con);
+			session.flush();
+			transaction.commit();
+			
+		}
+		session.close();
+	}
+	@org.junit.Test
+	public void testSelect(){
+		
+	}
+}

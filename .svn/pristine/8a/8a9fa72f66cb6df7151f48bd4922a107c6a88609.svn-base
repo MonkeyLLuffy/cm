@@ -1,0 +1,20 @@
+package cn.dlb.cm.dao.user;
+
+import org.springframework.stereotype.Repository;
+
+import cn.dlb.cm.base.dao.BaseDaoImpl;
+import cn.dlb.cm.entity.User;
+
+@Repository
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
+
+	
+	public User check(User user) {
+		return (User) this.getSession()//
+				.createQuery("from User where username=? and password=?")//
+				.setParameter(0, user.getUsername())//
+				.setParameter(1, user.getPassword())//
+				.getSingleResult();
+	}
+	
+}

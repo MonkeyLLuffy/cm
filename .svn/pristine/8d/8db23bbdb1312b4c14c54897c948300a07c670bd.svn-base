@@ -1,0 +1,147 @@
+package cn.dlb.cm.entity;
+
+import java.util.Date;
+
+public class ContractRecord {
+	private String id;
+	private String contractNum;
+	private String contractName;
+	private String partyA;
+	private String partyB;
+	private String contractType;
+	private Date signingDate;
+	private Date deadline;
+	private Date importDate;
+	private Date exportDate;
+	private Date updateDate;
+	private String contractAmount;
+	private String depart;
+	private String operator;
+	private String remark;
+	private ContractFile contractFile;
+	private User importUser;
+	private int state;
+	
+	
+	public String getContractNum() {
+		return contractNum;
+	}
+	public void setContractNum(String contractNum) {
+		this.contractNum = contractNum;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+	public Date getExportDate() {
+		return exportDate;
+	}
+	public void setExportDate(Date exportDate) {
+		this.exportDate = exportDate;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getContractName() {
+		return contractName;
+	}
+	public void setContractName(String contractName) {
+		this.contractName = contractName;
+	}
+	public String getPartyA() {
+		return partyA;
+	}
+	public void setPartyA(String partyA) {
+		this.partyA = partyA;
+	}
+	public String getPartyB() {
+		return partyB;
+	}
+	public void setPartyB(String partyB) {
+		this.partyB = partyB;
+	}
+	public String getContractType() {
+		return contractType;
+	}
+	public void setContractType(String contractType) {
+		this.contractType = contractType;
+	}
+	public Date getSigningDate() {
+		return signingDate;
+	}
+	public void setSigningDate(Date signingDate) {
+		this.signingDate = signingDate;
+	}
+	public Date getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
+	}
+	public Date getImportDate() {
+		return importDate;
+	}
+	public void setImportDate(Date importDate) {
+		this.importDate = importDate;
+	}
+	public String getContractAmount() {
+		return contractAmount;
+	}
+	public void setContractAmount(String contractAmount) {
+		this.contractAmount = contractAmount;
+	}
+	public String getDepart() {
+		return depart;
+	}
+	public void setDepart(String depart) {
+		this.depart = depart;
+	}
+	public String getOperator() {
+		return operator;
+	}
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public ContractFile getContractFile() {
+		return contractFile;
+	}
+	public void setContractFile(ContractFile contractFile) {
+		this.contractFile = contractFile;
+	}
+	public User getImportUser() {
+		return importUser;
+	}
+	public void setImportUser(User importUser) {
+		this.importUser = importUser;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	@Override
+	public String toString() {
+		return "ContractRecord [id=" + id + ", contractName=" + contractName
+				+ ", partyA=" + partyA + ", partyB=" + partyB
+				+ ", contractType=" + contractType + ", signingDate="
+				+ signingDate + ", deadline=" + deadline + ", importDate="
+				+ importDate + ", exportDate=" + exportDate + ", updateDate="
+				+ updateDate + ", contractAmount=" + contractAmount
+				+ ", depart=" + depart + ", operator=" + operator + ", remark="
+				+ remark + ", state=" + state + "]";
+	}
+	
+	
+}

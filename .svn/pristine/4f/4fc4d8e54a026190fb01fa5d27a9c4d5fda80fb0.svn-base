@@ -1,0 +1,108 @@
+﻿$.ajax({
+    type: "POST",
+    url: "/cm/role/getRoleWithPaging.action",
+    async: true,
+    data:
+    {
+        page: 1,
+        rows: 10
+    },
+    success: function (result) {
+        if (result && result != "") {
+
+            var json = eval(result);
+            for (var i in json) {
+                var d = json[i];
+                var num = i;
+                num = parseInt(num) + 1;
+                $('#roleSettingData').append('<tr><td>' +
+                    '<input type="checkbox" class="checkItems" />' +
+                    '</td><td>' + num +
+                    '</td><td>' + d.ROLENAME +
+                    '</td><td>' + d.REMARK +
+                    '</td><td>' +
+                    '<a href="javascript:update(' + d.ID + ')"><span> 权限 </span></a>' +
+                    '<a href="javascript:uodatePassword(' + d.ID + ')"><span> 修改 </span></a>' +
+                    '<a href="javascript:uodatePassword(' + d.ID + ')"><span> 删除 </span></a>' +
+                    '</td></tr>');
+            }
+        }
+    },
+    error: function (data) {
+        alert("导入数据失败!");
+    }
+});
+
+function update(id) {
+    alert(id);
+}
+
+function add() {
+	var ROLENAME = $("#roleName").val();
+	var REMARK = $("#remark").val();
+	var dialog = $("#dialog-form").dialog({
+	    autoOpen: false,
+	    height: 220,
+	    width: 300,
+	    
+	    modal: true,
+	    buttons: {
+	        "新增": function () {
+
+	        	$.ajax({
+	        	    type: "POST",
+	        	    url: "/cm/role/add.action",
+	        	    async: true,
+	        	    data:
+	        	    {
+	        	    	roleName: ROLENAME,
+	        	        remark: REMARK
+	        	    },
+	        	    success: function (result) {
+	        	        if (result && result != "") {
+
+	        	        }
+	        	    }
+	        	   });
+	            $(this).dialog("close");
+
+	        },
+	        "取消": function () {
+	            $(this).dialog("close");
+	        }
+	    },
+	    close: function () {
+	    }
+	});
+	$("#dialog-form").dialog("open");
+}
+function setRole(){
+	$("#dialog-setRole").dialog({
+	    autoOpen: false,
+	    height: 600,
+	    width: 500,
+	    modal: true,
+	    buttons: {
+	        "新增": function () {
+
+	            alert("创建成功");
+	            $(this).dialog("close");
+
+	        },
+	        "取消": function () {
+	            $(this).dialog("close");
+	        }
+	    },
+	    close: function () {
+	        alert("关闭");
+	    }
+	});
+
+	$("#dialog-setRole").dialog("open");	
+}
+
+
+// 刷新页面
+function PageReload() {
+    $('#dg').datagrid('reload');
+}

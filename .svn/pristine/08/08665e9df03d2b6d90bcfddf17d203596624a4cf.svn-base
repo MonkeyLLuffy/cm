@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+	<VALUE>
+		<ID>流程编号</ID>
+		<contractName>合同名称</contractName>
+		<partyA>甲方</partyA>
+		<partyB>乙方</partyB>
+		<contractType>合同类型</contractType>
+		<signingDate>签订日期</signingDate>
+		<deadline>期限</deadline>
+		<importDate>导入日期</importDate>
+		<contractAmount>合同金额</contractAmount>
+		<depart>经手部门</depart>
+		<operator>经办人</operator>
+		<contractFile>合同文件</contractFile>
+		<importUser>导入者</importUser>
+		<state>记录状态</state>
+		<remark>备注</remark>
+	</VALUE>
+</CONFIG> 

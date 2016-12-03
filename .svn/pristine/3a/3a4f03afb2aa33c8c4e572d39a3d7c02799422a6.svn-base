@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 16:38:02 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="cn.dlb.cm.entity.Role" table="ROLE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="roleName" type="java.lang.String">
+            <column name="ROLENAME" />
+        </property>
+        <set name="users" table="USER_ROLE" >
+            <key>
+                <column name="ROLE" />
+            </key>
+            <many-to-many class="cn.dlb.cm.entity.User" column="USER"/>
+        </set>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+        <set name="permission" table="ROLE_PERMISSION" inverse="false" lazy="true">
+            <key>
+                <column name="ROLE" />
+            </key>
+            <many-to-many class="cn.dlb.cm.entity.Permission" column="PERMISSION"/>
+        </set>
+    </class>
+</hibernate-mapping>
